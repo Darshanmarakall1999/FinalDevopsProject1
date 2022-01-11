@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="formbody">
+</section>
+
+<form id="form" action="/login" method="POST">
+    <style>body {background-image: url('bg_building.jpg');background-size:cover;</style>}
+    <div class="container">
+        <img src="realestate.jpg" class="center"><br>
+        <label for ="uname"><b>Username</b></label>
+        <input type ="text" id="uname" placeholder="Enter Username" name="username" required >
+
+        <label for="pass"><b>Password</b></label>
+        <input type="password" id="pass" placeholder="Enter Password" name="password" required>
+
+        <button type="submit">Login</button>
+    </div>
+</form>
+</div>
+
+<form id="form1" action="/userRegister">
+    <button type="submit">New user? SignUp</button>
+</form>
+<!--<script>
+var data = document.getElementById('uname').value;
+localStorage.setItem('uname1',data);
+</script>-->
+
+</body>
+</html>

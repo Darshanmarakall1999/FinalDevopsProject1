@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+        p { color: #222; font-family: 'Open Sans', sans-serif; font-size: 15px; font-weight: 400;
+         line-height: 24px; padding:0 0 0 2px; margin: 0 0 14px; }
+
+        h4{ color: #262626; font-family: 'Open Sans', sans-serif; font-size: 34px;
+        font-weight: 300; line-height: 40px; margin: 0 0 16px; }
+
+        body {
+        background-image:url('buy.jpg');
+        background-size:cover;
+}
+        </style>
+
+</head>
+<body style="align:center">
+<form id="back" action="estate_details.html">
+    <input style="background:black;margin:0 105%;" type="submit" value="Property details" >
+</form>
+
+<div id="table">
+    <form action="Payment.html">
+    <p><b>Enter Pid:</b>
+    <input type="text" placeholder="eg:1001"  required></p>
+        <label for="add"> <p><b>Choose an Address:</b></label>
+            <select name="add" id="add">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select></p>
+        <p><b>Enter Username:</b>
+        <input type="text" placeholder="eg: John Wick"  required></p>
+        <p><b>Enter Emailid:</b>
+        <input type="text"placeholder="eg:s@gmail.com" required></p>
+        <p><b>Enter Contact Number:</b>
+            <input type="text"placeholder="eg:9058956347" required></p>
+        <input style="background:black;" type="submit" value="Book Property">
+    </form>
+</div>
+
+</body>
+</html>

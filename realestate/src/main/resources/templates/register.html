@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+.register{padding:50%,border:solid 5px,background-color:grey,top-margin:5%}
+body {
+  background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('bg2.jpg');
+    background-size:cover;}
+     </style>
+<body id="formbody">
+<h2 style="color:red"></h2>
+<div class="register">
+  <form id="form" action="/register" method="post">
+    <label><b>Name:</b></label><br>
+    <input type="text" id="1" placeholder="Enter full Name" class="FirstName" name="name" required><br>
+    <label><b>Username:</b></label><br>
+    <input type="text" id="2" placeholder="Enter username" class="FirstName" name="username"required><br>
+    <label><b>Email:</b></label><br>
+    <input type="email" id="6" placeholder="Enter email" class="FirstName" name="emailid" required><br>
+    <label><b>Password:</b></label><br>
+    <input type="password" id="4" placeholder="Enter password" class="FirstName" name="password" required><br>
+    <label><b>Contact no:</b></label><br>
+    <input type="text" id="5"placeholder="Enter contact no" class="FirstName" name="contactnumber" required><br>
+    <button type="submit" onclick="ValidateEmail(document.getElementById('6'))">Register</button>
+  </form>
+</div>
+<script>
+function ValidateEmail(inputText)
+{
+var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+if(inputText.value.match(mailformat))
+{
+alert("You have entered a valid email address!");    //The pop up alert for a valid email address
+document.form.emailid.focus();
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
+document.form.emailid.focus();
+return false;
+}
+}
+</script>
+</body>
+</html>

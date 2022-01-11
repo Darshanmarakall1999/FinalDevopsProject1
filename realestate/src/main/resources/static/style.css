@@ -1,0 +1,322 @@
+/*css  for index.html*/
+/* Bordered form */
+#form,#form1{
+
+  padding:30px 40px;
+  height:auto;
+  width:400px;
+  background:rgba(0,0,0,0.3);
+  margin:auto auto;
+}
+
+.form_admin_options{
+ box-shadow:20px 20px 50px 0 ;
+  padding:30px 40px;
+  height:auto;
+  width:200px;
+  background:rgba(0,0,0,0);
+  margin:auto 1200px;
+
+  }
+  .form1_admin_options{
+   box-shadow:20px 20px 50px 0 ;
+    padding:50px 40px;
+    height:600px;
+    width:210px;
+    background:rgba(0,0,0,0);
+    margin:auto 1000px;
+
+    }
+
+
+.button_admin_options{
+background-color: orange;
+}
+
+/*css on body in index.html*/
+  #formbody {
+  margin-top:130px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+  align:center;
+  }
+  #formbody_1 {
+    margin-top:15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    align:center;
+    }
+
+    #formbody_get {
+      margin-top:200px;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto;
+      height: auto;
+      align:center;
+      }
+
+
+  /* Full-width inputs */
+  #form label{
+  color:#fff;
+
+  }
+
+ #uname,#pass,#name,#email,#phone{
+  border:none;
+  padding:auto;
+  margin: 15px 0;
+  width:100%;
+  background:transparent;
+  outline:none;
+  color:#fff;
+  font-size:15px;
+  border-bottom:1px solid #fff;
+  height:25px;
+}
+#message{
+background:transparent;
+width:100%;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #555;
+  color:white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 103%;
+  background:#4682B4;
+  border-radius:20px;
+  font-size:15px;
+}
+
+/* Add a hover effect for buttons */
+  button:hover {
+  opacity: 0.5;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius:50%;
+  content: '';
+  position:fixed;
+  width: 10vw;
+  height: 20vh;
+  center:100px;
+  left:580px;
+  top:80px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.center:hover {
+  box-shadow: 0 0 7px 3px #4682B4;
+}
+
+
+/*css code for table in Traindetails.html*/
+table, td, th {
+ border: 1px solid #ddd;
+ text-align: center;
+}
+
+table {
+ border-collapse: collapse;
+ width: 100%;
+ border:3px solid #CDC9C9;
+}
+
+th, td {
+ padding: 15px;
+
+}
+/*css code for form in Buy.html*/
+
+#table
+{
+ box-shadow:20px 10px 80px 0 ;
+ background:rgb(100,100,100,0.5);
+ border-radius:0px;
+ width:650px;
+ height:450px;
+ padding:7px 7px;
+ margin:15px auto;
+ box-sizing:border-box;
+}
+
+input[type=text]{
+ font-family:Verdana;
+ width:100%;
+ padding:4px 6px;
+ margin:6px 0;
+ box-sizing:border-box;
+
+}
+input[type=submit]{
+ background-color:black;
+ width:110px;
+ height:30px;
+ border-radius:5px;
+ margin:auto 3px;
+ color:white;
+}
+/*css code for Confirmticket.html*/
+#confirmbody{
+ box-sizing:border-box;
+ border:1px solid #555;
+ background-color:#f5FFFA;
+ margin: 120px auto;
+ width:50%;
+ height:250px;
+ border-radius:20px;
+ background:transparent;
+ box-shadow:20px 10px 80px 0 ;
+}
+
+#conf{
+ width: 7%;
+ margin: 40px 55px;
+}
+#back{
+ width:500px;
+ margin: 40px 55px;
+}
+
+/*css code for Ticketdownload.html*/
+#ticketbody{
+ box-sizing:border-box;
+ border:1px solid #555;
+ background:transparent;
+ margin: 120px auto;
+ width:50%;
+ height:360px;
+ border-radius:20px;
+ box-shadow:20px 10px 80px 0 ;
+}
+.FirstName{
+  border:none;
+  padding:auto;
+  margin: 15px 0;
+  width:100%;
+  background:transparent;
+  outline:none;
+  color:#fff;
+  font-size:15px;
+  border-bottom:1px solid #fff;
+  height:25px;
+}
+.center1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius:50%;
+  content: '';
+  position:fixed;
+  width: 10vw;
+  height: 20vh;
+  center:100px;
+  left:500px;
+  top:200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.center2{
+  display: block;
+  margin-left: 200px;
+  margin-right:auto ;
+  border-radius:50%;
+  content: '';
+  position:fixed;
+  width: 10vw;
+  height: 20vh;
+  center:100px;
+  left:500px;
+  top:200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/*about page*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #4682B4;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #4682B4;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}

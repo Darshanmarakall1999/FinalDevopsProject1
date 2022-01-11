@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddAproperty</title>
+</head>
+<style>
+input[type=text], select {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=number], select {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 40%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  width:50%;
+  margin:auto auto;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+ </style>
+<body id="formbody" >
+<h2  align="center" style:"color:#fff">Update Property </h2>
+<div>
+    <form id="form" align="center" action="#" th:action="@{/saveEmployee}" th:object="${house}"
+			method="POST">
+        <label><b>Pid:</b></label><br>
+        <input type="text" id="1" placeholder="Enter pid" class="FirstName" th:field="*{pid}" readonly="readonly"><br>
+        <label><b>Address:</b></label><br>
+        <input type="text" id="2" placeholder="Enter address" class="FirstName" th:field="*{address}" required><br>
+        
+        <label><b>Bedrooms:</b></label><br>
+        <input type="number" id="3" placeholder="Enter no. of bedrooms" class="FirstName" th:field="*{bedrooms}" required><br>
+         
+        <label><b>Bathrooms:</b></label><br>
+        <input type="number" id="4" placeholder="Enter no. of bathrooms" class="FirstName" th:field="*{bathrooms}" required><br>
+         
+        <label><b>Size_sqrt:</b></label><br>
+        <input type="number" id="5" placeholder="Enter size in sqft" class="FirstName" th:field="*{size_sqft}" required><br>
+         
+        <label><b>Price:</b></label><br>
+        <input type="number" id="6" placeholder="Enter price" class="FirstName" th:field="*{price}" required><br>
+         
+        <label><b>Owner Contact:</b></label><br>
+        <input type="text" id="8" placeholder="Enter Owner contact" class="FirstName" th:field="*{ownercontactnumber}" required><br>
+         
+        <button class="button" type="submit" >Update</button>
+    </form>
+    <!--<form action="/homepage">-->
+    <button class="button" type="submit" onclick ="javascript:history.back();return true;" >Back</button>
+   <!-- </form>-->
+    
+</div>
+</body>
+</html>

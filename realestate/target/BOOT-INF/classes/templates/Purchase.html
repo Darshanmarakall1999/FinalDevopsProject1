@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+        p { color: #222; font-family: 'Open Sans', sans-serif; font-size: 15px; font-weight: 400;
+         line-height: 24px; padding:0 0 0 2px; margin: 0 0 14px; }
+
+        h4{ color: #262626; font-family: 'Open Sans', sans-serif; font-size: 34px;
+        font-weight: 300; line-height: 40px; margin: 0 0 16px; }
+
+        body {
+        background-image:url('train1.jpg');
+        background-size:cover;
+}
+        </style>
+        <script>
+        function addPassenger(){
+             var pass_details2 = document.getElementById("pass2");
+             var pass_details3 = document.getElementById("pass3");
+             var pass_details4 = document.getElementById("pass4");
+             var x = document.getElementById("passengers2");
+             var y = document.getElementById("passengers3");
+             var z = document.getElementById("passengers4");
+
+            if(x.checked==true){
+
+            pass_details2.style.display = "block";
+            }
+            else{
+            pass_details2.style.display = "none";
+            }
+
+            if(y.checked==true){
+            pass_details2.style.display = "block";
+            pass_details3.style.display = "block";
+            }
+            else{
+            pass_details3.style.display = "none";
+            }
+
+            if(z.checked==true){
+            pass_details2.style.display = "block";
+            pass_details3.style.display = "block";
+            pass_details4.style.display = "block";
+            }
+
+            else{
+            pass_details4.style.display = "none";
+            }
+        }
+
+        function onlyOne(checkbox) {
+    var checkboxes = document.getElementsByName('check')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
+}
+</script>
+</head>
+<body style="align:center">
+<form id="back" action="estate_details.html">
+    <input style="background:black;margin:0 105%;" type="submit" value="property details" >
+</form>
+
+<div id="table">
+    <form action="Confirmticket.html">
+    <p><b>Enter train number:</b>
+    <input type="text" placeholder="eg:1001" id="train_number" name="train_number" required></p>
+    <p><b>Choose travel date:</b>
+    <input type="date" id="travel_date" name="travel date" required></p>
+    <p><b>Enter number of passengers:</b>
+    <input type="checkbox" id="passengers1" name="check" value="1"  placeholder="maximum 4 passengers" onclick="onlyOne(this);addPassenger();">1
+    <input type="checkbox" id="passengers2" name="check" value="2"  placeholder="maximum 4 passengers" onclick="onlyOne(this);addPassenger();">2
+    <input type="checkbox" id="passengers3" name="check" value="3"  placeholder="maximum 4 passengers" onclick="onlyOne(this);addPassenger();">3
+    <input type="checkbox" id="passengers4" name="check" value="4"  placeholder="maximum 4 passengers" onclick="onlyOne(this);addPassenger();">4
+    </p><br>
+    <hr>
+    <h2 >Enter passenger details</h2>
+    <div id="pass1">
+        <p><b>Enter passenger name:</b>
+        <input type="text" placeholder="eg: John Wick" id="pass_name1" name="pass_name1" required></p>
+        <p><b>Enter age:</b>
+        <input type="number" id="pass_age1" placeholder="eg:30" name="pass_age1" required></p>
+        <p><b>Enter gender:</b>
+            male<input type="radio"  name="pass_gen1" >
+            female<input type="radio"  name="pass_gen1" >
+        </p>
+    </div>
+    <div style="display:none" id="pass2">
+        <p><b>Enter passenger name:</b>
+        <input type="text" placeholder="eg: John Wick" id="pass_name2" name="pass_name" ></p>
+        <p><b>Enter age:</b>
+        <input type="number" id="pass_age2" placeholder="eg:30" name="pass_age" ></p>
+        <p><b>Enter gender:</b>
+        <p>male<input type="radio" id="pass_gen2" name="pass_gen" >
+            female<input type="radio" id="pass_gen2f" name="pass_gen">
+        </p>
+    </div>
+    <div style="display:none" id="pass3">
+        <p><b>Enter passenger name:</b>
+        <input type="text" placeholder="eg: John Wick" id="pass_name3" name="pass_name" ></p>
+        <p><b>Enter age:</b>
+        <input type="number" id="pass_age3" placeholder="eg:30" name="pass_age" ></p>
+        <p><b>Enter gender:</b>
+        <p>male<input type="radio" id="pass_gen3" name="pass_gen" >
+            female<input type="radio" id="pass_gen3f" name="pass_gen">
+        </p>
+    </div>
+    <div style="display:none" id="pass4">
+        <p><b>Enter passenger name:</b>
+        <input type="text" placeholder="eg: John Wick" id="pass_name4" name="pass_name" ></p>
+        <p><b>Enter age:</b>
+        <input type="number" id="pass_age4" placeholder="eg:30" name="pass_age" ></p>
+        <p><b>Enter gender:</b>
+        <p>male<input type="radio" id="pass_gen4" name="pass_gen" >
+            female<input type="radio" id="pass_gen4f" name="pass_gen">
+        </p>
+    </div>
+
+
+        <input style="background:black;" type="submit" value="Book Ticket">
+    </form>
+</div>
+
+</body>
+</html>
