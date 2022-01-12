@@ -90,6 +90,12 @@ public class SoldHouses {
 	public void setOwnercontactnumber(String ownercontactnumber) {
 		this.ownercontactnumber = ownercontactnumber;
 	}
+	@Override
+	public String toString() {
+		return "username=" + username + ", pid=" + pid + ", address=" + address + ", bedrooms=" + bedrooms
+				+ ", bathrooms=" + bathrooms + ", size_sqft=" + size_sqft + ", price=" + price + ", ownercontactnumber="
+				+ ownercontactnumber;
+	}
 	
 	
 	

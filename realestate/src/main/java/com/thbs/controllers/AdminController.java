@@ -50,7 +50,7 @@ public class AdminController {
 			if (a.getPassword().equals(userFromDb.getPassword())) {
 				List<House> listProducts = houseService.getAllProperties();
 				model.addAttribute("listProducts", listProducts);
-				final String adminId= a.getAdminid();
+				String adminId= a.getAdminid();
 				model.addAttribute("adminId", adminId);
 				return "index1";
 			} else {

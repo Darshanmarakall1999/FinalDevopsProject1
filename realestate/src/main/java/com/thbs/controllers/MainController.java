@@ -5,6 +5,7 @@ package com.thbs.controllers;
  */
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.thbs.constantProperties.Constants;
@@ -80,7 +81,9 @@ public class MainController {
 		return "search1";
 	}
 	@RequestMapping(value = Constants.USER_PAYMENT_PAGE)
-	public String Payment(Model model) {
+	public String Payment(Model model,@PathVariable("pid") int pid) {
+		model.addAttribute("name",UserController.n);
+		model.addAttribute("pid",pid);
 		return "Payment";
 	}
 	

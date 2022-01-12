@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,6 +28,7 @@ import com.thbs.services.houseServices;
 public class UserController {
 	@Autowired
 	UserRepository userRepository;
+	static String n;
 
 	@Autowired
 	houseServices houseService;
@@ -43,7 +45,7 @@ public class UserController {
 			return "index";
 		}
 	}
-
+  
 	@PostMapping(value = Constants.USER_LOGIN_VALIDATION)
 	public String loginUser(@ModelAttribute("user") User u, Model model) {
 		Optional<User> searchUser = userRepository.findById(u.getUsername());
@@ -52,7 +54,7 @@ public class UserController {
 			if (u.getPassword().equals(userFromDb.getPassword())) {
 				List<House> listProducts = houseService.getAllProperties();
 				model.addAttribute("listProducts", listProducts);
-				String n= u.getUsername();
+				n= u.getUsername();
 				model.addAttribute("n", n);
 				return "userindex";
 			} else {
@@ -76,18 +78,20 @@ public class UserController {
 	public String viewHomePage(@ModelAttribute("user") User user, Model model ) {
 		List<House> listProducts = houseService.getAllProperties();
 		model.addAttribute("listProducts", listProducts);
-		String n= user.getUsername();
 		model.addAttribute("n", n);
 		return "userindex";
 	}
-	
+	static int pid;
 	@Autowired 
 	PurchaseService purchaseservice;
 	@PostMapping(value = Constants.USER_CONFIRM_PURCHASE)
-	public String confirm_purchase(@ModelAttribute("purchase") Purchase purchase) {
+	public String confirm_purchase(@ModelAttribute("purchase") Purchase purchase, Model model) {
 		String confirm = purchaseservice.savepurchase(purchase); 
 		if(confirm.equals("true"))
 		{
+			pid=purchase.getPid();
+			model.addAttribute("pid",pid);
+			model.addAttribute("username",n);
 			return "success";
 		}
 		return "Payment";
@@ -99,7 +103,8 @@ public class UserController {
 	
 	@RequestMapping(value="/getReceipt")
 	  public String getReceipt(@ModelAttribute("soldhouse") SoldHouses soldhouse ,Model model) {
-	  Optional<SoldHouses> listProducts = purchaseservice.getASoldHouse(soldhouse.getPid());
+	  
+	  Optional<SoldHouses> listProducts = purchaseservice.getASoldHouse(pid);
 	  if(listProducts.isPresent())
 	  {
 		  model.addAttribute("listProducts", listProducts.get());  
