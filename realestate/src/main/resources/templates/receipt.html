@@ -76,7 +76,8 @@ div.a {
 
 	<div class="container my-2">
 	<h1>Receipt</h1>
-		<table border="3"  class = "table table-striped table-responsive-md" >
+		<table  id="table1" border="3"  class = "table table-striped table-responsive-md" >
+            
 			<thead>
 				<tr>
 				    <th>Username</th>
@@ -104,10 +105,22 @@ div.a {
 				</td>
 			</tbody>
 		</table>
-		<a href="C:\Users\Darshan\Documents\workspace-spring-tool-suite-4-4.13.0.RELEASE\realestate\src\main\resources\templates\"${soldhouse.username}"" download>Download</a>
+		<button type="button" class=" btn btn-primary" onclick="Function()">Download</button>	
 		
 		<a th:href="@{/homepage1}" class="btn btn-primary">Home</a>
 		
 	</div>
+	 <script src="jspdf.umd.min.js"></script>
+    <script src="jspdf.plugin.autotable.js"></script>
+	<script>
+	 function Function()
+		{
+			var doc = new jspdf.jsPDF();
+doc.autoTable({ html: '#table1' });
+doc.save("table.pdf");
+console.log("asd");
+}
+</script>
+
 </body>
 </html>
