@@ -92,6 +92,8 @@ public class UserController {
 			pid=purchase.getPid();
 			model.addAttribute("pid",pid);
 			model.addAttribute("username",n);
+			model.addAttribute("price", MainController.price);
+		
 			return "success";
 		}
 		return "Payment";

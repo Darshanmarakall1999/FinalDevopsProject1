@@ -98,7 +98,7 @@ div.a {
 					<td th:text="${house.size_sqft}"></td>
 					<td th:text="${house.price}"></td>
 					<td th:text="${house.ownercontactnumber}"></td>
-					<td><a th:href="@{/PaymentPage}" class="btn btn-primary">Purchase</a>
+					<td><a th:href="@{'/PaymentPage/'+${house.pid}}" class="btn btn-primary">Purchase</a>
 				</td>
 				</td>
 			</tbody>

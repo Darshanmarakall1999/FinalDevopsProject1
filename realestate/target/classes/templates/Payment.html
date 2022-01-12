@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Credit Card Validation Demo</title>
+	<title>PaymentPage</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -364,19 +364,25 @@
 		<div class="heading">
 			<h1>Confirm Purchase</h1>
 		</div>
-		<div class="payment">
+		
 			<form action="#" th:action="@{/confirm_purchase}" th:object="${purchase}" method="POST">
+			<div class="payment">
+		<div class="form-group owner">
+					<label for="owner">Price</label>
+					<input type="number" class="form-control" id="owner" name="price" th:value="${price}" readonly>
+				</div>
 				<div class="form-group owner">
 					<label for="owner">UserName</label>
-					<input type="text" class="form-control" id="owner" name="username" th:value="${name}">
+					<input type="text" class="form-control" id="owner1" name="username" th:value="${name}" readonly>
 				</div>
 				<div class="form-group PropertyId">
 					<label for="cvv">PropertyId</label>
-					<input type="number" class="form-control" id="pid" name="pid" th:value="${pid}">
+					<input type="number" class="form-control" id="pid" name="pid" th:value="${pid}" readonly>
 				</div>
+			
 				<div class="form-group ">
 					<label for="cvv">CardHolder Name</label>
-					<input type="text" class="form-control" id="pid" name="pid" required>
+					<input type="text" class="form-control" id="pid1"  required>
 				</div>
 				<div class="form-group CVV">
 					<label for="cvv">CVV</label>
@@ -417,7 +423,7 @@
 					<img src="amex.jpg" id="amex">
 				</div>
 				<div class="form-group" id="pay-now">
-					<button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+					<button type="submit" class="btn btn-default" id="confirm-purchase">Pay</button>
 				</div>
 			</form>
 		</div>

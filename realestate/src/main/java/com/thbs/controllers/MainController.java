@@ -1,5 +1,8 @@
 package com.thbs.controllers;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 /*
  * author = Darshan and Rounak
  */
@@ -10,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.thbs.constantProperties.Constants;
 import com.thbs.models.House;
+import com.thbs.repository.HouseRepository;
 
 @Controller
 public class MainController {
+	@Autowired
+	HouseRepository houseRepository;
 
+	static int price;
 	@RequestMapping(value = Constants.LANDING_PAGE)
 	public String index() {
 		return "property-detail";
@@ -84,6 +91,10 @@ public class MainController {
 	public String Payment(Model model,@PathVariable("pid") int pid) {
 		model.addAttribute("name",UserController.n);
 		model.addAttribute("pid",pid);
+		Optional<House> house=houseRepository.findById(pid);
+		House house1=house.get();
+		price=house1.getPrice();
+		model.addAttribute("price",price);
 		return "Payment";
 	}
 	

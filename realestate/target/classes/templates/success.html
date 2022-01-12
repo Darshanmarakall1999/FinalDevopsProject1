@@ -42,9 +42,9 @@ margin: 0 auto;
 <i class="checkmark">✓</i>
 </div>
 <form action="/getReceipt">
-<h1>Success</h1>
+<h3 style="color:deeppink;">Rs.  <span th:text="${price}"></span> paid successfully...</h3>
 <h4 style="color:crimson;">user <span th:text="${username}"></span> successfully purchased property with PropertyId  <span th:text="${pid}"></span></h4>
-<button type="submit" class="btn btn-default" id="confirm-purchase" >OK</button>
+<button type="submit" class="btn btn-default" id="confirm-purchase" >Get Receipt</button>
 </form>
 </div>
 </body>
