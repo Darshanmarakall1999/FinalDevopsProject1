@@ -12,7 +12,7 @@ import com.thbs.models.House;
  * @author Darshan
  *
  */
-public interface UserServices {
+public interface UserService {
 	public ResponseEntity<User> profile(@PathVariable String username);
 	public ResponseEntity<User> unregister(@PathVariable String username);
 

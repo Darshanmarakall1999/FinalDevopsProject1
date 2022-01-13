@@ -3,9 +3,7 @@ package com.thbs.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-/*
- * author = Darshan and Rounak
- */
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,12 +13,18 @@ import com.thbs.constantProperties.Constants;
 import com.thbs.models.House;
 import com.thbs.repository.HouseRepository;
 
+/**
+ * 
+ * @author Darshan
+ *
+ */
 @Controller
 public class MainController {
 	@Autowired
 	HouseRepository houseRepository;
 
 	static int price;
+
 	@RequestMapping(value = Constants.LANDING_PAGE)
 	public String index() {
 		return "property-detail";
@@ -64,40 +68,42 @@ public class MainController {
 	public String admin_login() {
 		return "admin";
 	}
-	
-	@RequestMapping(value =Constants.UPDATE_PAGE)
+
+	@RequestMapping(value = Constants.UPDATE_PAGE)
 	public String updateProperty() {
 		return "update_employee";
 	}
-	
+
 	@RequestMapping(value = Constants.ADD_PROPERTY_PAGE)
 	public String newProperty() {
 		return "new_employee";
 	}
-	
-	@RequestMapping(value =Constants.ADMIN_SEARCH_PAGE)
+
+	@RequestMapping(value = Constants.ADMIN_SEARCH_PAGE)
 	public String search(Model model) {
-		House house=new House();
-		model.addAttribute("house",house);
+		House house = new House();
+		model.addAttribute("house", house);
 		return "search";
 	}
-	@RequestMapping(value =Constants.USER_SEARCH_PAGE)
+
+	@RequestMapping(value = Constants.USER_SEARCH_PAGE)
 	public String search1(Model model) {
-		House house=new House();
-		model.addAttribute("house",house);
+		House house = new House();
+		model.addAttribute("house", house);
 		return "search1";
 	}
+
 	@RequestMapping(value = Constants.USER_PAYMENT_PAGE)
-	public String Payment(Model model,@PathVariable("pid") int pid) {
-		model.addAttribute("name",UserController.n);
-		model.addAttribute("pid",pid);
-		Optional<House> house=houseRepository.findById(pid);
-		House house1=house.get();
-		price=house1.getPrice();
-		model.addAttribute("price",price);
+	public String Payment(Model model, @PathVariable("pid") int pid) {
+		model.addAttribute("name", UserController.n);
+		model.addAttribute("pid", pid);
+		Optional<House> house = houseRepository.findById(pid);
+		House house1 = house.get();
+		price = house1.getPrice();
+		model.addAttribute("price", price);
 		return "Payment";
 	}
-	
+
 	@RequestMapping(value = Constants.USER_RECEIPT_PAGE)
 	public String Receipt(Model model) {
 		return "receipt";

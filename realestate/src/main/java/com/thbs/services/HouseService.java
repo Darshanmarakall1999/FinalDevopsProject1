@@ -12,7 +12,7 @@ import com.thbs.models.House;
  * @author Darshan
  *
  */
-public interface houseServices {
+public interface HouseService {
  
 	/**
 	 * 

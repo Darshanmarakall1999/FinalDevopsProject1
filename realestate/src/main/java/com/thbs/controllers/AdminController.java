@@ -1,6 +1,5 @@
 package com.thbs.controllers;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,8 @@ import com.thbs.constantProperties.Constants;
 import com.thbs.models.Admin;
 import com.thbs.models.House;
 import com.thbs.repository.AdminRepository;
-import com.thbs.services.houseServiceImpl;
+import com.thbs.services.HouseServiceImpl;
+
 /**
  * 
  * @author Darshan
@@ -29,28 +29,31 @@ import com.thbs.services.houseServiceImpl;
 @Controller
 public class AdminController {
 	@Autowired
-	houseServiceImpl houseService;
+	HouseServiceImpl houseService;
 	@Autowired
 	AdminRepository adminRepository;
-
-	private static final Log LOGGER=LogFactory.getLog(RealestateApplication.class); 
 	
+	static String adminId;
+	private static final Log LOGGER = LogFactory.getLog(RealestateApplication.class);
+
 	/**
+	 * Admin login validation
 	 * 
 	 * @param a
 	 * @param model
 	 * @return
 	 */
-	
+
 	@PostMapping(value = Constants.ADMIN_LOGIN_VALIDATION)
 	public String admin(@ModelAttribute("admin") Admin a, Model model) {
+		LOGGER.info("aminId of admin :{}" + a.getAdminid());
 		Optional<Admin> searchUser = adminRepository.findById(a.getAdminid());
 		if (searchUser.isPresent()) {
 			Admin userFromDb = searchUser.get();
 			if (a.getPassword().equals(userFromDb.getPassword())) {
 				List<House> listProducts = houseService.getAllProperties();
 				model.addAttribute("listProducts", listProducts);
-				String adminId= a.getAdminid();
+				adminId = a.getAdminid();
 				model.addAttribute("adminId", adminId);
 				return "index1";
 			} else {
@@ -60,10 +63,10 @@ public class AdminController {
 			return "admin";
 		}
 	}
-	
 
 	/**
-	 * display list of employees
+	 * display list of Properties
+	 * 
 	 * @param admin
 	 * @param model
 	 * @return
@@ -72,10 +75,16 @@ public class AdminController {
 	public String viewHomePage(@ModelAttribute("admin") Admin admin, Model model) {
 		List<House> listProducts = houseService.getAllProperties();
 		model.addAttribute("listProducts", listProducts);
-		String adminId = admin.getAdminid();
 		model.addAttribute("adminId", adminId);
 		return "index1";
 	}
+
+	/**
+	 * To insert a property in the table
+	 * 
+	 * @param model
+	 * @return
+	 */
 
 	@GetMapping(value = Constants.ADMIN_ADD_NEWPROPERY)
 	public String showNewEmployeeForm(Model model) {
@@ -85,12 +94,26 @@ public class AdminController {
 		return "new_employee";
 	}
 
+	/**
+	 * To save the property
+	 * 
+	 * @param house
+	 * @return
+	 */
 	@PostMapping(value = Constants.ADMIN_SAVE_PROPERTY)
 	public String saveEmployee(@ModelAttribute("house") House house) {
 		// save employee to database
 		houseService.saveEmployee(house);
 		return "redirect:/homepage";
 	}
+
+	/**
+	 * to update the property
+	 * 
+	 * @param pid
+	 * @param model
+	 * @return
+	 */
 
 	@GetMapping(value = Constants.ADMIN_UPDATE_PROPERTY)
 	public String showFormForUpdate(@PathVariable(value = "pid") int pid, Model model) {
@@ -99,6 +122,12 @@ public class AdminController {
 		return "update_employee";
 	}
 
+	/**
+	 * deleteHouse(to delete the property by propertyId)
+	 * 
+	 * @param pid
+	 * @return
+	 */
 	@GetMapping(value = Constants.ADMIN_DELETE_PROPERTY)
 	public String deleteHouse(@PathVariable(value = "pid") int pid) {
 
@@ -107,7 +136,14 @@ public class AdminController {
 		return "redirect:/homepage";
 	}
 
-	@RequestMapping(value=Constants.ADMIN_SEARCH_OPTIONS)
+	/**
+	 * to search a particular property by PropertyId
+	 * 
+	 * @param house
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = Constants.ADMIN_SEARCH_OPTIONS)
 	public String serchTest(@ModelAttribute("house") House house, Model model) {
 		Optional<com.thbs.models.House> listProducts = houseService.getAEmployee(house.getPid());
 		if (listProducts.isPresent()) {
@@ -115,15 +151,5 @@ public class AdminController {
 		}
 		return "index2";
 	}
-
-	/*
-	 * @GetMapping(value ="/Purchase/{pid}") public String
-	 * purchase(@PathVariable(value = "pid") int pid, Model model) {
-	 * 
-	 * house house = houseService.getEmployeeById(pid); model.addAttribute("house",
-	 * house);
-	 * 
-	 * return "Payment"; }
-	 */
 
 }

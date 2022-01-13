@@ -7,6 +7,9 @@ public class Constants {
 	 * All the pages
 	 */
 	public static final String LANDING_PAGE = "/";
+	/**
+	 * USERLOGIN_PAGE
+	 */
 	public static final String USERLOGIN_PAGE = "/user";
 	public static final String CONTACT_PAGE = "/contact";
 	public static final String USERREGISTER_PAGE = "/userRegister";
@@ -31,6 +34,7 @@ public class Constants {
 	public static final String USER_LOGIN_VALIDATION = "/login";
 	public static final String USER_SEARCH_OPTIONS = "/testing1";
 	public static final String USER_CONFIRM_PURCHASE = "/confirm_purchase";
+	public static final String USER_RECEIPT = "/getReceipt";
 	/*
 	 * ADMIN API'S
 	 */

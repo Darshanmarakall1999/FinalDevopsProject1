@@ -14,7 +14,7 @@ import com.thbs.models.House;
 import com.thbs.repository.HouseRepository;
 
 @Service
-public class houseServiceImpl implements houseServices {
+public class HouseServiceImpl implements HouseService {
 
 	@Autowired
 	HouseRepository houseRepository;

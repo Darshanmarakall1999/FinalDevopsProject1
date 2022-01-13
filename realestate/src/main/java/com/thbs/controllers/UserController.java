@@ -1,8 +1,5 @@
 package com.thbs.controllers;
 
-/*
- * author= Rounak
- */
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +19,11 @@ import com.thbs.models.SoldHouses;
 import com.thbs.models.User;
 import com.thbs.repository.UserRepository;
 import com.thbs.services.PurchaseService;
-import com.thbs.services.houseServices;
+import com.thbs.services.HouseService;
 
+/**
+ * @author Darshan and Rounak
+ */
 @Controller
 public class UserController {
 	@Autowired
@@ -31,7 +31,18 @@ public class UserController {
 	static String n;
 
 	@Autowired
-	houseServices houseService;
+	HouseService houseService;
+
+	static int pid;
+	@Autowired
+	PurchaseService purchaseservice;
+
+	/**
+	 * user registration and validation
+	 * 
+	 * @param user
+	 * @return
+	 */
 	@PostMapping(value = Constants.USER_RGISTERATION)
 	public String registerUser(@ModelAttribute("user") User user) {
 		// TODO Auto-generated method stub
@@ -45,7 +56,14 @@ public class UserController {
 			return "index";
 		}
 	}
-  
+
+	/**
+	 * user login validation
+	 * 
+	 * @param u
+	 * @param model
+	 * @return
+	 */
 	@PostMapping(value = Constants.USER_LOGIN_VALIDATION)
 	public String loginUser(@ModelAttribute("user") User u, Model model) {
 		Optional<User> searchUser = userRepository.findById(u.getUsername());
@@ -54,7 +72,7 @@ public class UserController {
 			if (u.getPassword().equals(userFromDb.getPassword())) {
 				List<House> listProducts = houseService.getAllProperties();
 				model.addAttribute("listProducts", listProducts);
-				n= u.getUsername();
+				n = u.getUsername();
 				model.addAttribute("n", n);
 				return "userindex";
 			} else {
@@ -64,53 +82,75 @@ public class UserController {
 		} else
 			return "invalid";
 	}
-	@RequestMapping(value=Constants.USER_SEARCH_OPTIONS)
-	  public String serchTest(@ModelAttribute("house") House house ,Model model) {
-	  Optional<com.thbs.models.House> listProducts = houseService.getAEmployee(house.getPid());
-	  if(listProducts.isPresent())
-	  {
-		  model.addAttribute("listProducts", listProducts.get());  
-	  }
-	  return "userget";
-	  }
 
-	@GetMapping(value =Constants.USER_OPERATION_TESTING_PAGE)
-	public String viewHomePage(@ModelAttribute("user") User user, Model model ) {
+	/**
+	 * property search validation
+	 * 
+	 * @param house
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = Constants.USER_SEARCH_OPTIONS)
+	public String serchTest(@ModelAttribute("house") House house, Model model) {
+		Optional<com.thbs.models.House> listProducts = houseService.getAEmployee(house.getPid());
+		if (listProducts.isPresent()) {
+			model.addAttribute("listProducts", listProducts.get());
+		}
+		return "userget";
+	}
+
+	/**
+	 * searching a particular property by propertyId
+	 * 
+	 * @param user
+	 * @param model
+	 * @return
+	 */
+	@GetMapping(value = Constants.USER_OPERATION_TESTING_PAGE)
+	public String viewHomePage(@ModelAttribute("user") User user, Model model) {
 		List<House> listProducts = houseService.getAllProperties();
 		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("n", n);
 		return "userindex";
 	}
-	static int pid;
-	@Autowired 
-	PurchaseService purchaseservice;
+
+	/**
+	 * this API will used to purchase a property
+	 * 
+	 * @param purchase
+	 * @param model
+	 * @return
+	 */
 	@PostMapping(value = Constants.USER_CONFIRM_PURCHASE)
 	public String confirm_purchase(@ModelAttribute("purchase") Purchase purchase, Model model) {
-		String confirm = purchaseservice.savepurchase(purchase); 
-		if(confirm.equals("true"))
-		{
-			pid=purchase.getPid();
-			model.addAttribute("pid",pid);
-			model.addAttribute("username",n);
+		String confirm = purchaseservice.savepurchase(purchase);
+		if (confirm.equals("true")) {
+			pid = purchase.getPid();
+			model.addAttribute("pid", pid);
+			model.addAttribute("username", n);
 			model.addAttribute("price", MainController.price);
-		
+
 			return "success";
 		}
 		return "Payment";
-		
+
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
-	@RequestMapping(value="/getReceipt")
-	  public String getReceipt(@ModelAttribute("soldhouse") SoldHouses soldhouse ,Model model) {
-	  
-	  Optional<SoldHouses> listProducts = purchaseservice.getASoldHouse(pid);
-	  if(listProducts.isPresent())
-	  {
-		  model.addAttribute("listProducts", listProducts.get());  
-	  }
-	  return "receipt";
-	  }
+
+	/**
+	 * to get receipt
+	 * 
+	 * @param soldhouse
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = Constants.USER_RECEIPT)
+	public String getReceipt(@ModelAttribute("soldhouse") SoldHouses soldhouse, Model model) {
+
+		Optional<SoldHouses> listProducts = purchaseservice.getASoldHouse(pid);
+		if (listProducts.isPresent())
+			model.addAttribute("listProducts", listProducts.get());
+		return "receipt";
+	}
 }

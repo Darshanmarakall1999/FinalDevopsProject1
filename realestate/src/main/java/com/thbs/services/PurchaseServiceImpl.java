@@ -54,8 +54,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 					+ "\r\nPrice      	    : " + s1.getPrice() +"\r\nOwner ContactNumber : " + s1.getOwnercontactnumber());
 			StringBuilder fText = sb;
             //
-			//File file=new File("C:\\Users\\Darshan\\Documents\\workspace-spring-tool-suite-4-4.13.0.RELEASE\\realestate\\src\\main\\resources\\templates\\"+s1.getUsername()+"_"+s1.getPid()+".txt");
-			File file=new File("C:\\Users\\Darshan\\Documents\\workspace-spring-tool-suite-4-4.13.0.RELEASE\\realestate\\src\\main\\resources\\templates\\"+s1.getUsername()+".txt");
+			File file=new File("C:\\Users\\Darshan\\Documents\\workspace-spring-tool-suite-4-4.13.0.RELEASE\\realestate\\src\\main\\resources\\templates\\"+s1.getUsername()+"_"+s1.getPid()+".txt");
+			//File file=new File("C:\\Users\\Darshan\\Documents\\workspace-spring-tool-suite-4-4.13.0.RELEASE\\realestate\\src\\main\\resources\\templates\\"+s1.getUsername()+".txt");
 			try
 	                (
 	                        FileOutputStream output=new FileOutputStream(file);

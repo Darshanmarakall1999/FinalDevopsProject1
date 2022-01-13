@@ -14,7 +14,7 @@ import com.thbs.repository.UserRepository;
 import com.thbs.models.House;
 
 @Service
-public class UserServiceImpl implements UserServices {
+public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
