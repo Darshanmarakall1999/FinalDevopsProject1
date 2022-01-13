@@ -22,7 +22,7 @@
 
 .customers tr:nth-child(even){background-color: #f2f2f2;}
 
-.customers tr:hover {background-color:red;}
+.customers tr:hover {background-color:dodgerblue;}
 
 .customers th {
   padding-top: 12px;
@@ -42,7 +42,7 @@ div {
   background-color: blue; /* Green background */
   border: 1px solid green; /* Green border */
   color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
+  padding: 6px 22px; /* Some padding */
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */
 }
@@ -70,20 +70,25 @@ div.a {
 }
 	</style>
 </head>
-<body style="background-color:deeppink">
-<div style="background-color:aqua;width:100%;height:155px;border:orange;border-width:100%">
+<body style="background-color:bisque">
+<div style="background-color:aqua;width:100%;height:125px;border:orange;border-width:100%">
 <h3 style="text-align:center;color:darkorange">User Portal</h3>
-<h5 style="color:red;"><marquee direction="right" scrollmount="15">Check out your Dream House....!!!!</marquee></h5>
-<h5 style="text-align:right;color:deeppink;margin-top:0%">Welcome, <span th:text="${n}"></span></h5>
-<form action="/" style="margin-left:92%">
-	<button style="margin-top:1%" class="btn btn-primary btn-sm mb-3" type="submit">Logout</button>
+<h5 style="color:red;margin-left:22%"><marquee direction="right" scrollmount="13" width="78%">Check out your Dream House....!!!!</marquee></h5>
+<h5 style="text-align:right;color:deeppink;margin-top:-3%">Welcome, <span th:text="${n}"></span></h5>
+<div style="background-color:aqua;" class="btn-group">
+<form action="/" style="margin-left:91%;margin-top:-1%;">
+	<button  class="btn btn-primary btn-sm mb-3" type="submit">Logout</button>
 	</form>
+<form action="/updatePasswordPage" style="margin-left:-99%;margin-top:-1%;">
+	<button  class="btn btn-primary btn-sm mb-3" type="submit">Reset password</button>
+	</form>
+</div>
 </div>
     <div class="btn-group">
 	<div class="container my-2">
 	<h4 style="color:deeppink">Property List</h4>
 	<form action="/search1" >
-	<button class="btn btn-primary btn-sm mb-3" type="submit" style="position: absolute;top: 20px;left:200px;">search</button>
+	<button class="btn btn-primary btn-sm mb-3" type="submit" style="position: absolute;top: 23px;left:200px;">search</button>
 	</form>
 		<table id="MyTable" class="customers" border="3"  >
 			<thead>
@@ -115,12 +120,6 @@ div.a {
 	</div>
 	
 	</div>
-<script>
-var user1 = "${n}";
-sessionStorage.setItem('key1', user1);
-var usern = sessionStorage.getItem('key1');
-
-</script>
 </body>
 
 </html>

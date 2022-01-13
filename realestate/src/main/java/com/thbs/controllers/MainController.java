@@ -113,5 +113,13 @@ public class MainController {
 	public String getPassword(Model model) {
 		return "forgotPassword";
 	}
+	
+	@RequestMapping(value = "/updatePasswordPage")
+	public String updatePassword(Model model) {
+		model.addAttribute("username",UserController.n);
+		return "updatePassword";
+	}
+	
+	
 
 }

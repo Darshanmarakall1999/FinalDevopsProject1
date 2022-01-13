@@ -22,12 +22,12 @@ public interface HouseService {
 
 	void saveEmployee(House h);
 
-	House getEmployeeById(int pid);
+	House getPropertyByPid(int pid);
 
-	void deleteEmployeeById(int pid);
+	void deletePropertyByPid(int pid);
 
 	Page<House> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 
-	Optional<House> getAEmployee(int pid);
+	Optional<House> getProperty(int pid);
 
 }

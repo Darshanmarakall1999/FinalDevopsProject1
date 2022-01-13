@@ -30,7 +30,7 @@ public class HouseServiceImpl implements HouseService {
 	}
 
 	@Override
-	public House getEmployeeById(int pid) {
+	public House getPropertyByPid(int pid) {
 		Optional<House> optional = houseRepository.findById(pid);
 		House h = null;
 		if (optional.isPresent()) {
@@ -42,7 +42,7 @@ public class HouseServiceImpl implements HouseService {
 	}
 
 	@Override
-	public void deleteEmployeeById(int pid) {
+	public void deletePropertyByPid(int pid) {
 		this.houseRepository.deleteById(pid);
 		
 	}
@@ -58,7 +58,7 @@ public class HouseServiceImpl implements HouseService {
 	}
 	
 	  @Override 
-	  public Optional<House> getAEmployee(int pid) { 
+	  public Optional<House> getProperty(int pid) { 
 		  // TODO Auto-generated method stub
 	  Optional<House> list= houseRepository.findById(pid);
 	return list; 

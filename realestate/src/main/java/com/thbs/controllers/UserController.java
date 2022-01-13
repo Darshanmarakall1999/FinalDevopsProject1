@@ -3,37 +3,41 @@ package com.thbs.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.thbs.RealestateApplication;
 import com.thbs.constantProperties.Constants;
 import com.thbs.models.House;
 import com.thbs.models.Purchase;
 import com.thbs.models.SoldHouses;
 import com.thbs.models.User;
-import com.thbs.repository.UserRepository;
-import com.thbs.services.PurchaseService;
 import com.thbs.services.HouseService;
+import com.thbs.services.PurchaseService;
+import com.thbs.services.UserService;
 
 /**
  * @author Darshan and Rounak
  */
 @Controller
 public class UserController {
+	static int pid;
 	@Autowired
-	UserRepository userRepository;
+	UserService userService;
 	static String n;
 
 	@Autowired
 	HouseService houseService;
 
-	static int pid;
+	private static final Log LOGGER = LogFactory.getLog(RealestateApplication.class);
+	
 	@Autowired
 	PurchaseService purchaseservice;
 
@@ -43,16 +47,17 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
+	
 	@PostMapping(value = Constants.USER_RGISTERATION)
 	public String registerUser(@ModelAttribute("user") User user) {
 		// TODO Auto-generated method stub
-		Optional<User> searchUser = userRepository.findById(user.getUsername());
+		Optional<User> searchUser = userService.getUser(user.getUsername());
 		if (searchUser.isPresent()) {
 			User userFound = searchUser.get();
 			return "sameusername";
 
 		} else {
-			userRepository.save(user);
+			userService.userSave(user);
 			return "index";
 		}
 	}
@@ -66,7 +71,7 @@ public class UserController {
 	 */
 	@PostMapping(value = Constants.USER_LOGIN_VALIDATION)
 	public String loginUser(@ModelAttribute("user") User u, Model model) {
-		Optional<User> searchUser = userRepository.findById(u.getUsername());
+		Optional<User> searchUser = userService.getUser(u.getUsername());
 		if (searchUser.isPresent()) {
 			User userFromDb = searchUser.get();
 			if (u.getPassword().equals(userFromDb.getPassword())) {
@@ -91,8 +96,8 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = Constants.USER_SEARCH_OPTIONS)
-	public String serchTest(@ModelAttribute("house") House house, Model model) {
-		Optional<com.thbs.models.House> listProducts = houseService.getAEmployee(house.getPid());
+	public String serchProperty(@ModelAttribute("house") House house, Model model) {
+		Optional<com.thbs.models.House> listProducts = houseService.getProperty(house.getPid());
 		if (listProducts.isPresent()) {
 			model.addAttribute("listProducts", listProducts.get());
 		}
@@ -107,7 +112,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping(value = Constants.USER_OPERATION_TESTING_PAGE)
-	public String viewHomePage(@ModelAttribute("user") User user, Model model) {
+	public String userPortal(@ModelAttribute("user") User user, Model model) {
 		List<House> listProducts = houseService.getAllProperties();
 		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("n", n);
@@ -133,9 +138,6 @@ public class UserController {
 			return "success";
 		}
 		return "Payment";
-
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -153,19 +155,35 @@ public class UserController {
 			model.addAttribute("listProducts", listProducts.get());
 		return "receipt";
 	}
-	
-	@RequestMapping(value ="/forgotPassword")
+
+	@RequestMapping(value = "/forgotPassword")
 	public String forgotPassword(@ModelAttribute("user") User user, Model model) {
-		Optional<User> user1=userRepository.findById(user.getUsername());
-		if(user1.isPresent())
-		{
-			User u=user1.get();
-			String username=u.getUsername();
-			String password=u.getPassword();
+		Optional<User> user1 = userService.getUser(user.getUsername());
+		if (user1.isPresent()) {
+			User u = user1.get();
+			String username = u.getUsername();
+			String password = u.getPassword();
 			model.addAttribute("username", username);
 			model.addAttribute("password", password);
 			return "gettingOldPasswordPage";
 		}
 		return "forgotPassword";
+	}
+
+	@PostMapping(value = "/updatePassword")
+	public String updatePassword(@ModelAttribute("user") User user, Model model) {
+		Optional<User> user1 =userService.getUser(user.getUsername());
+		User u=user1.get();
+		LOGGER.info(u);
+		String oldPassword=u.getPassword();
+		LOGGER.info(oldPassword);
+		String newPassword=user.getPassword();
+		LOGGER.info(newPassword);
+		u.setPassword(user.getPassword());
+		model.addAttribute("oldPassword",oldPassword);
+		model.addAttribute("newPassword",newPassword);
+		userService.userSave(u);
+		LOGGER.info(u);
+		return "passwordSuccess";
 	}
 }

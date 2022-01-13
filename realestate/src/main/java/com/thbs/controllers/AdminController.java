@@ -117,7 +117,7 @@ public class AdminController {
 
 	@GetMapping(value = Constants.ADMIN_UPDATE_PROPERTY)
 	public String showFormForUpdate(@PathVariable(value = "pid") int pid, Model model) {
-		House house = houseService.getEmployeeById(pid);
+		House house = houseService.getPropertyByPid(pid);
 		model.addAttribute("house", house);
 		return "update_employee";
 	}
@@ -132,7 +132,7 @@ public class AdminController {
 	public String deleteHouse(@PathVariable(value = "pid") int pid) {
 
 		// call delete employee method
-		this.houseService.deleteEmployeeById(pid);
+		this.houseService.deletePropertyByPid(pid);
 		return "redirect:/homepage";
 	}
 
@@ -145,7 +145,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = Constants.ADMIN_SEARCH_OPTIONS)
 	public String serchTest(@ModelAttribute("house") House house, Model model) {
-		Optional<com.thbs.models.House> listProducts = houseService.getAEmployee(house.getPid());
+		Optional<com.thbs.models.House> listProducts = houseService.getProperty(house.getPid());
 		if (listProducts.isPresent()) {
 			model.addAttribute("listProducts", listProducts.get());
 		}
