@@ -153,4 +153,19 @@ public class UserController {
 			model.addAttribute("listProducts", listProducts.get());
 		return "receipt";
 	}
+	
+	@RequestMapping(value ="/forgotPassword")
+	public String forgotPassword(@ModelAttribute("user") User user, Model model) {
+		Optional<User> user1=userRepository.findById(user.getUsername());
+		if(user1.isPresent())
+		{
+			User u=user1.get();
+			String username=u.getUsername();
+			String password=u.getPassword();
+			model.addAttribute("username", username);
+			model.addAttribute("password", password);
+			return "gettingOldPasswordPage";
+		}
+		return "forgotPassword";
+	}
 }

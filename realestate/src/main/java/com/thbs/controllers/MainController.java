@@ -108,5 +108,10 @@ public class MainController {
 	public String Receipt(Model model) {
 		return "receipt";
 	}
+	
+	@RequestMapping(value = "/forgotPasswordPage")
+	public String getPassword(Model model) {
+		return "forgotPassword";
+	}
 
 }

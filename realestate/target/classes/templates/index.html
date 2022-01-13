@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Login page</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+    #forgot{ color:white;margin-left:34%;};
+    </style>
 </head>
 <body id="formbody">
 </section>
@@ -19,6 +22,7 @@
         <input type="password" id="pass" placeholder="Enter Password" name="password" required>
 
         <button type="submit">Login</button>
+        <a id="forgot" th:href="@{/forgotPasswordPage}">Forgot password</a>
     </div>
 </form>
 </div>
