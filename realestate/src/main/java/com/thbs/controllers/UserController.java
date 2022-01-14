@@ -79,7 +79,7 @@ public class UserController {
 				model.addAttribute("listProducts", listProducts);
 				n = u.getUsername();
 				model.addAttribute("n", n);
-				return "userindex";
+				return "userportl";
 			} else {
 				return "invalid";
 			}
@@ -116,7 +116,7 @@ public class UserController {
 		List<House> listProducts = houseService.getAllProperties();
 		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("n", n);
-		return "userindex";
+		return "userportl";
 	}
 
 	/**
@@ -159,8 +159,8 @@ public class UserController {
 	@RequestMapping(value = "/forgotPassword")
 	public String forgotPassword(@ModelAttribute("user") User user, Model model) {
 		Optional<User> user1 = userService.getUser(user.getUsername());
-		if (user1.isPresent()) {
-			User u = user1.get();
+		User u = user1.get();
+		if (user1.isPresent() && user.getContactnumber().equals(u.getContactnumber())) {
 			String username = u.getUsername();
 			String password = u.getPassword();
 			model.addAttribute("username", username);
@@ -174,16 +174,12 @@ public class UserController {
 	public String updatePassword(@ModelAttribute("user") User user, Model model) {
 		Optional<User> user1 =userService.getUser(user.getUsername());
 		User u=user1.get();
-		LOGGER.info(u);
 		String oldPassword=u.getPassword();
-		LOGGER.info(oldPassword);
 		String newPassword=user.getPassword();
-		LOGGER.info(newPassword);
 		u.setPassword(user.getPassword());
 		model.addAttribute("oldPassword",oldPassword);
 		model.addAttribute("newPassword",newPassword);
 		userService.userSave(u);
-		LOGGER.info(u);
 		return "passwordSuccess";
 	}
 }
