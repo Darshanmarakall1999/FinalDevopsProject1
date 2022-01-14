@@ -98,32 +98,24 @@ div.a {
 <div class="wrapper">
 	<div class="navbar">
 		<div class="logo">
-			<a >USER PORTAL</a>
+			<a >ADMIN PORTAL</a>
    	   </div>
 		<div class="nav_right">
 			<ul>
 				<li class="nr_li dd_main">
-				<h5 style="text-align:right;color:deeppink;margin-top:-2%">Welcome, <span th:text="${n}"></span></h5>
+				<h5 style="text-align:right;color:deeppink;margin-top:-2%">Welcome, <span th:text="${adminId}"></span></h5>
 					<img style="margin-left:50%" src="profile.png" alt="profile_img">
 					
 					<div class="dd_menu">
 						<div class="dd_left">
 							<ul>
-								<li><i class="fas fa-cog"></i></li>
 								<li><i class="fas fa-sign-out-alt"></i></li>
-								
 							</ul>
 						</div>
 						<lass="dd_right">
 							<ul>	
-								<li><form action="/updatePasswordPage">
-	<button  class="button" type="submit">Setting</button>
-	</form></li>
 								<li><form action="/">
 	<button  class="button" type="submit">Logout</button>
-	</form></li>
-	<li><form action="/userProfile">
-	<button  class="button" type="submit">Profile</button>
 	</form></li>
 							</ul>
 						</div>
@@ -134,13 +126,19 @@ div.a {
 </div>	
 <br>
 <br>
-
 <div class="btn-group">
 	<div class="container my-2">
-	<h2 style="color:deeppink;margin-left:10%">Property List</h2>
-	<form action="/search1" >
-	<button class="btn btn-primary btn-sm mb-3" type="submit" style="position: absolute;margin-top:-3%;left:300px;">search</button>
+	<h2 style="color:darkred;margin-left:10%">Property List</h2>
+	<form action="/showNewEmployeeForm" >
+	<button class="button" type="submit" style="position: absolute;top: 105px;left:300px;">Add property</button>
 	</form>
+	<form action="/search" >
+	<button class="button" type="submit" style="position: absolute;top: 105px;left:450px;">search</button>
+	</form>
+    <!--<form th:action="@{/homepage}" method="GET"">
+    <input id="textSearch" type="text" name="keyword">
+    <button type="submit">Go</button>
+    </form>-->
 		<table id="MyTable" class="customers" border="3"  >
 			<thead>
 				<tr class="header">
@@ -163,7 +161,8 @@ div.a {
 					<td th:text="${house.size_sqft}"></td>
 					<td th:text="${house.price}"></td>
 					<td th:text="${house.ownercontactnumber}"></td>
-					<td><a th:href="@{'/PaymentPage/'+${house.pid}}" class="button1">Purchase</a>
+					<td><a th:href="@{/showFormForUpdate/{pid}(pid=${house.pid})}" class="button1">Update</a>
+					    <a th:href="@{/deleteEmployee/{pid}(pid=${house.pid})}" class="button1">Delete</a>
 				</td>
 				</tr>
 			</tbody>
@@ -171,8 +170,7 @@ div.a {
 	</div>
 	
 	</div>
-
-<script>
+	<script>
 	var dd_main = document.querySelector(".dd_main");
 
 	dd_main.addEventListener("click", function(){

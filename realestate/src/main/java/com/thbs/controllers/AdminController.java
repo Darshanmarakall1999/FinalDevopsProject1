@@ -55,7 +55,7 @@ public class AdminController {
 				model.addAttribute("listProducts", listProducts);
 				adminId = a.getAdminid();
 				model.addAttribute("adminId", adminId);
-				return "index1";
+				return "adminportal";
 			} else {
 				return "admin";
 			}
@@ -76,7 +76,7 @@ public class AdminController {
 		List<House> listProducts = houseService.getAllProperties();
 		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("adminId", adminId);
-		return "index1";
+		return "adminportal";
 	}
 
 	/**

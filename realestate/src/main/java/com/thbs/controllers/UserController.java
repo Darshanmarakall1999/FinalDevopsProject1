@@ -182,4 +182,14 @@ public class UserController {
 		userService.userSave(u);
 		return "passwordSuccess";
 	}
+	@RequestMapping(value = "/userProfile")
+	public String profile(Model model) {
+		Optional<User> user=userService.getUser(n);
+		User u=user.get();
+		model.addAttribute("username",UserController.n);
+		model.addAttribute("emailid",u.getEmailid());
+		model.addAttribute("name",u.getName());
+		model.addAttribute("contactnumber",u.getContactnumber());
+		return "profile";
+	}
 }
