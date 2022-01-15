@@ -10,5 +10,6 @@ public interface PurchaseService {
 	
 	public String savepurchase(Purchase purchase);
 	Optional<SoldHouses> getASoldHouse(int pid);
+	Optional<Purchase> getAPurchaseDetails(int pid);
 
 }

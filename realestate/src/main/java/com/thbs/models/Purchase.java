@@ -9,11 +9,8 @@ public class Purchase {
     @Id
 	int pid;
 	String username;
-	public Purchase(int pid, String username) {
-		super();
-		this.pid = pid;
-		this.username = username;
-	}
+	String transactionId;
+	
 	public Purchase() {
 		super();
 	}
@@ -29,9 +26,21 @@ public class Purchase {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	public String getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
+	public Purchase(int pid, String username, String transactionId) {
+		super();
+		this.pid = pid;
+		this.username = username;
+		this.transactionId = transactionId;
+	}
 	@Override
 	public String toString() {
-		return "Purchase [pid=" + pid + ", username=" + username + "]";
+		return "Purchase [pid=" + pid + ", username=" + username + ", transactionId=" + transactionId + "]";
 	}
 	
 

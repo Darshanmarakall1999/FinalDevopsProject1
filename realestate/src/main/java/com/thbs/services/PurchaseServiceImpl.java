@@ -83,4 +83,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 		Optional<SoldHouses> list = soldhouses.findById(pid);
 		return list;
 	}
+
+	@Override
+	public Optional<Purchase> getAPurchaseDetails(int pid) {
+		// TODO Auto-generated method stub
+		Optional<Purchase> purchase =purchaserepository.findById(pid);
+		return purchase;
+	}
 }

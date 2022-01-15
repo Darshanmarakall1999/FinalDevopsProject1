@@ -2,6 +2,7 @@ package com.thbs.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -53,7 +54,6 @@ public class UserController {
 		// TODO Auto-generated method stub
 		Optional<User> searchUser = userService.getUser(user.getUsername());
 		if (searchUser.isPresent()) {
-			User userFound = searchUser.get();
 			return "sameusername";
 
 		} else {
@@ -128,13 +128,22 @@ public class UserController {
 	 */
 	@PostMapping(value = Constants.USER_CONFIRM_PURCHASE)
 	public String confirm_purchase(@ModelAttribute("purchase") Purchase purchase, Model model) {
+		pid = purchase.getPid();
+		Random rand=new Random();
+        int count=(rand.nextInt(100)+100);
+        String s3=Integer.toString(count);
+        char ch=n.charAt(0);
+        String s1=Character.toString(ch);
+        int pid1=pid;
+        String s2=Integer.toString(pid1);
+        String s=s1+s2+s3;
+        model.addAttribute("tid",s);
+        purchase.setTransactionId(s);
 		String confirm = purchaseservice.savepurchase(purchase);
 		if (confirm.equals("true")) {
-			pid = purchase.getPid();
 			model.addAttribute("pid", pid);
 			model.addAttribute("username", n);
 			model.addAttribute("price", MainController.price);
-
 			return "success";
 		}
 		return "Payment";
@@ -148,14 +157,26 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = Constants.USER_RECEIPT)
-	public String getReceipt(@ModelAttribute("soldhouse") SoldHouses soldhouse, Model model) {
+	public String getReceipt(@ModelAttribute("soldhouse") SoldHouses soldhouse, Model model,@ModelAttribute("purchase") Purchase purchase) {
 
 		Optional<SoldHouses> listProducts = purchaseservice.getASoldHouse(pid);
+		Optional<Purchase> p=purchaseservice.getAPurchaseDetails(pid);
+		purchase=p.get();
 		if (listProducts.isPresent())
-			model.addAttribute("listProducts", listProducts.get());
+			{model.addAttribute("listProducts", listProducts.get());
+		    model.addAttribute("purchase",purchase);
+		model.addAttribute("tid",purchase.getTransactionId());
+		return "receipt";
+			}
 		return "receipt";
 	}
 
+	/**
+	 * this API will help the user to reset the password
+	 * @param user
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/forgotPassword")
 	public String forgotPassword(@ModelAttribute("user") User user, Model model) {
 		Optional<User> user1 = userService.getUser(user.getUsername());
@@ -170,6 +191,12 @@ public class UserController {
 		return "forgotPassword";
 	}
 
+	/**
+	 * This API will help the user to update the password...
+	 * @param user
+	 * @param model
+	 * @return
+	 */
 	@PostMapping(value = "/updatePassword")
 	public String updatePassword(@ModelAttribute("user") User user, Model model) {
 		Optional<User> user1 =userService.getUser(user.getUsername());
@@ -182,6 +209,12 @@ public class UserController {
 		userService.userSave(u);
 		return "passwordSuccess";
 	}
+	
+	/**
+	 * This will use User to see his profile details...
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/userProfile")
 	public String profile(Model model) {
 		Optional<User> user=userService.getUser(n);
