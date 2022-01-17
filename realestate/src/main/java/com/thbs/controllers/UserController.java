@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thbs.RealestateApplication;
 import com.thbs.constantProperties.Constants;
@@ -20,6 +21,7 @@ import com.thbs.models.House;
 import com.thbs.models.Purchase;
 import com.thbs.models.SoldHouses;
 import com.thbs.models.User;
+import com.thbs.repository.PurchaseRepository;
 import com.thbs.services.HouseService;
 import com.thbs.services.PurchaseService;
 import com.thbs.services.UserService;
@@ -36,6 +38,8 @@ public class UserController {
 
 	@Autowired
 	HouseService houseService;
+	@Autowired 
+	PurchaseRepository purchaseRepository;
 
 	private static final Log LOGGER = LogFactory.getLog(RealestateApplication.class);
 	
@@ -225,4 +229,13 @@ public class UserController {
 		model.addAttribute("contactnumber",u.getContactnumber());
 		return "profile";
 	}
+	
+	@RequestMapping(value ="/purchaseHistory")
+	public String history(@ModelAttribute("purchase") Purchase purchase,Model model) {
+		List<Purchase> plist=purchaseRepository.findByUsername(n);
+	    model.addAttribute("purchaseList", plist);
+	    LOGGER.info(plist);
+		return "purchaseHistory";
+	}
+	
 }
