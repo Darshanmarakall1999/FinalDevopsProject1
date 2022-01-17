@@ -2,7 +2,6 @@ package com.thbs.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Purchase {
@@ -10,6 +9,7 @@ public class Purchase {
 	int pid;
 	String username;
 	String transactionId;
+	String dateandtime;
 	
 	public Purchase() {
 		super();
@@ -32,15 +32,23 @@ public class Purchase {
 	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 	}
-	public Purchase(int pid, String username, String transactionId) {
+	@Override
+	public String toString() {
+		return "Purchase [pid=" + pid + ", username=" + username + ", transactionId=" + transactionId + ", dateandtime="
+				+ dateandtime + "]";
+	}
+	public Purchase(int pid, String username, String transactionId, String dateandtime) {
 		super();
 		this.pid = pid;
 		this.username = username;
 		this.transactionId = transactionId;
+		this.dateandtime = dateandtime;
 	}
-	@Override
-	public String toString() {
-		return "Purchase [pid=" + pid + ", username=" + username + ", transactionId=" + transactionId + "]";
+	public String getDateandtime() {
+		return dateandtime;
+	}
+	public void setDateandtime(String dateandtime) {
+		this.dateandtime = dateandtime;
 	}
 	
 

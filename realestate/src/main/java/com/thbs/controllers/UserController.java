@@ -1,5 +1,7 @@
 package com.thbs.controllers;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.thbs.RealestateApplication;
 import com.thbs.constantProperties.Constants;
@@ -38,11 +39,11 @@ public class UserController {
 
 	@Autowired
 	HouseService houseService;
-	@Autowired 
+	@Autowired
 	PurchaseRepository purchaseRepository;
 
 	private static final Log LOGGER = LogFactory.getLog(RealestateApplication.class);
-	
+
 	@Autowired
 	PurchaseService purchaseservice;
 
@@ -52,7 +53,7 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	
+
 	@PostMapping(value = Constants.USER_RGISTERATION)
 	public String registerUser(@ModelAttribute("user") User user) {
 		// TODO Auto-generated method stub
@@ -133,16 +134,13 @@ public class UserController {
 	@PostMapping(value = Constants.USER_CONFIRM_PURCHASE)
 	public String confirm_purchase(@ModelAttribute("purchase") Purchase purchase, Model model) {
 		pid = purchase.getPid();
-		Random rand=new Random();
-        int count=(rand.nextInt(100)+100);
-        String s3=Integer.toString(count);
-        char ch=n.charAt(0);
-        String s1=Character.toString(ch);
-        int pid1=pid;
-        String s2=Integer.toString(pid1);
-        String s=s1+s2+s3;
-        model.addAttribute("tid",s);
-        purchase.setTransactionId(s);
+		String tid1 = getTid();
+		model.addAttribute("tid", tid1);
+		purchase.setTransactionId(tid1);
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formatDateTime = now.format(format);
+		purchase.setDateandtime(formatDateTime);
 		String confirm = purchaseservice.savepurchase(purchase);
 		if (confirm.equals("true")) {
 			model.addAttribute("pid", pid);
@@ -161,22 +159,24 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = Constants.USER_RECEIPT)
-	public String getReceipt(@ModelAttribute("soldhouse") SoldHouses soldhouse, Model model,@ModelAttribute("purchase") Purchase purchase) {
+	public String getReceipt(@ModelAttribute("soldhouse") SoldHouses soldhouse, Model model,
+			@ModelAttribute("purchase") Purchase purchase) {
 
 		Optional<SoldHouses> listProducts = purchaseservice.getASoldHouse(pid);
-		Optional<Purchase> p=purchaseservice.getAPurchaseDetails(pid);
-		purchase=p.get();
-		if (listProducts.isPresent())
-			{model.addAttribute("listProducts", listProducts.get());
-		    model.addAttribute("purchase",purchase);
-		model.addAttribute("tid",purchase.getTransactionId());
-		return "receipt";
-			}
+		Optional<Purchase> p = purchaseservice.getAPurchaseDetails(pid);
+		purchase = p.get();
+		if (listProducts.isPresent()) {
+			model.addAttribute("listProducts", listProducts.get());
+			model.addAttribute("purchase", purchase);
+			model.addAttribute("tid", purchase.getTransactionId());
+			return "receipt";
+		}
 		return "receipt";
 	}
 
 	/**
 	 * this API will help the user to reset the password
+	 * 
 	 * @param user
 	 * @param model
 	 * @return
@@ -197,45 +197,69 @@ public class UserController {
 
 	/**
 	 * This API will help the user to update the password...
+	 * 
 	 * @param user
 	 * @param model
 	 * @return
 	 */
 	@PostMapping(value = "/updatePassword")
 	public String updatePassword(@ModelAttribute("user") User user, Model model) {
-		Optional<User> user1 =userService.getUser(user.getUsername());
-		User u=user1.get();
-		String oldPassword=u.getPassword();
-		String newPassword=user.getPassword();
+		Optional<User> user1 = userService.getUser(user.getUsername());
+		User u = user1.get();
+		String oldPassword = u.getPassword();
+		String newPassword = user.getPassword();
 		u.setPassword(user.getPassword());
-		model.addAttribute("oldPassword",oldPassword);
-		model.addAttribute("newPassword",newPassword);
+		model.addAttribute("oldPassword", oldPassword);
+		model.addAttribute("newPassword", newPassword);
 		userService.userSave(u);
 		return "passwordSuccess";
 	}
-	
+
 	/**
 	 * This will use User to see his profile details...
+	 * 
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/userProfile")
 	public String profile(Model model) {
-		Optional<User> user=userService.getUser(n);
-		User u=user.get();
-		model.addAttribute("username",UserController.n);
-		model.addAttribute("emailid",u.getEmailid());
-		model.addAttribute("name",u.getName());
-		model.addAttribute("contactnumber",u.getContactnumber());
+		Optional<User> user = userService.getUser(n);
+		User u = user.get();
+		model.addAttribute("username", UserController.n);
+		model.addAttribute("emailid", u.getEmailid());
+		model.addAttribute("name", u.getName());
+		model.addAttribute("contactnumber", u.getContactnumber());
 		return "profile";
 	}
-	
-	@RequestMapping(value ="/purchaseHistory")
-	public String history(@ModelAttribute("purchase") Purchase purchase,Model model) {
-		List<Purchase> plist=purchaseRepository.findByUsername(n);
-	    model.addAttribute("purchaseList", plist);
-	    LOGGER.info(plist);
+    
+	/**
+	 * This API will helps to display the user purchase history.
+	 * @param purchase
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/purchaseHistory")
+	public String history(@ModelAttribute("purchase") Purchase purchase, Model model) {
+		List<Purchase> plist = purchaseRepository.findByUsername(n);
+		model.addAttribute("purchaseList", plist);
+		LOGGER.info(plist);
 		return "purchaseHistory";
 	}
-	
+
+	/**
+	 * this method helps to generate the random transaction id.
+	 * @return
+	 */
+	public String getTid() {
+		Random rand = new Random();
+		int count = (rand.nextInt(100) + 100);
+		String s3 = Integer.toString(count);
+		char ch = n.charAt(0);
+		String s1 = Character.toString(ch);
+		int pid1 = pid;
+		String s2 = Integer.toString(pid1);
+		String s = s1 + s2 + s3;
+		return s;
+	}
+
 }
