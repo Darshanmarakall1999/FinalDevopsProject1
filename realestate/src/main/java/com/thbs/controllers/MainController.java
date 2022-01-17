@@ -3,7 +3,6 @@ package com.thbs.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.thbs.constantProperties.Constants;
 import com.thbs.models.House;
+import com.thbs.models.User;
 import com.thbs.repository.HouseRepository;
+import com.thbs.services.UserService;
 
 /**
  * 
@@ -22,6 +23,9 @@ import com.thbs.repository.HouseRepository;
 public class MainController {
 	@Autowired
 	HouseRepository houseRepository;
+	
+	@Autowired
+	UserService userService;
 
 	static int price;
 
@@ -96,12 +100,16 @@ public class MainController {
 	@RequestMapping(value = Constants.USER_PAYMENT_PAGE)
 	public String Payment(Model model, @PathVariable("pid") int pid) {
 		model.addAttribute("name", UserController.n);
-		model.addAttribute("pid", pid);
+		String pid1="PropertyId "+pid;
+		model.addAttribute("pid", pid1);
 		Optional<House> house = houseRepository.findById(pid);
 		House house1 = house.get();
 		price = house1.getPrice();
 		model.addAttribute("price", price);
-		return "Payment";
+		Optional<User> u=userService.getUser(UserController.n);
+		User u1=u.get();
+		model.addAttribute("emailid", u1.getEmailid());
+		return "Payment1";
 	}
 
 	@RequestMapping(value = Constants.USER_RECEIPT_PAGE)

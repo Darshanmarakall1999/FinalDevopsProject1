@@ -148,7 +148,7 @@ public class UserController {
 			model.addAttribute("price", MainController.price);
 			return "success";
 		}
-		return "Payment";
+		return "Payment1";
 	}
 
 	/**

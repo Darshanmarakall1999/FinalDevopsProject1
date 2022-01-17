@@ -61,6 +61,10 @@ body{background-image:url('r1.jpg');background-repeat: no-repeat;
     <th>TransactionId:</th>
         <td th:text="${purchase.transactionId}"></td>
     </tr>
+   <tr th:each="purchase : ${purchase}">	
+    <th>DateAndTime:</th>
+        <td th:text="${purchase.dateandtime}"></td>
+    </tr> 
   <tr th:each="soldhouse : ${listProducts}">
     <th>ProertyId:</th>
 		<td th:text="${soldhouse.pid}"></td>
