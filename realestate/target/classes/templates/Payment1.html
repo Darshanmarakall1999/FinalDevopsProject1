@@ -239,7 +239,7 @@
 				</div>
 				<div class="input-group">
 					<div class="input-box">
-						<input type="tel" placeholder="Card Number" required class="name">
+						<input type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" title="card number should be in between 13 to 19 digits" autocomplete="cc-number" maxlength="19" placeholder="Card Number" required class="name" >
 						<i class="fa fa-credit-card icon"></i>
 					</div>
 				</div>

@@ -242,6 +242,7 @@ public class UserController {
 	public String history(@ModelAttribute("purchase") Purchase purchase, Model model) {
 		List<Purchase> plist = purchaseRepository.findByUsername(n);
 		model.addAttribute("purchaseList", plist);
+		model.addAttribute("username",n);
 		LOGGER.info(plist);
 		return "purchaseHistory";
 	}

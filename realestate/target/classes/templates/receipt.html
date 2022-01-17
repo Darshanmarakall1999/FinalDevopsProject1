@@ -1,58 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Property Management System</title>
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-	<style>
-
-.btn-group button {
-  background-color: blue; /* Green background */
-  border: 1px solid green; /* Green border */
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
 }
 
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
+.title {
+  color: grey;
+  font-size: 18px;
 }
 
-.btn-group button:not(:last-child) {
-  border-right:medium; /* Prevent double borders */
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color:blue;
+  text-align: center;
+  cursor: pointer;
+  width: 10%;
+  font-size: 18px;
 }
 
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: #3e8e41;
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color:indigo;
 }
 
-table, th, td {
-  border: 1px solid black;
+button:hover, a:hover {
+  opacity: 0.7;
+}
+.customers {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:auto;
+	margin-bottom:auto;
+  font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
+  width: 80%;
 }
-th, td {
-  padding: 5px;
-  text-align: left;
-}
-body{background-image:url('r1.jpg');background-repeat: no-repeat;
-  background-size: auto;}
-	</style>
-</head>
-<body style="margin-left: auto; margin-right: auto;margin-top:10%;margin-bottom:auto;">
 
-	<div class="container my-2">
-	
-<table id="table1" style="width:40%; margin-left: auto; margin-right: auto; background-color:bisque">
-<tr  style="background-color:aqua;"><th  colspan="2"><h3 style="color:brown;text-align:center">RECEIPT</h3></th></tr>
+.customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+.customers tr:nth-child(even){background-color: #f2f2f2;}
+
+.customers tr:hover {background-color:dodgerblue;}
+
+.customers th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color:white;
+  color:black;
+}
+.title {
+  color: grey;
+  font-size: 18px;
+}
+img{border-radius: 50%;}
+</style>
+</head>
+<body style="background-color:azure;">
+<br>
+<div class="card">
+<br>
+  <table id="table1" class="table" border="3" style="margin-top:5%;margin-left:21%;" >
+<tr><th  colspan="2"><h3 style="color:brown;text-align:center;background-color:white">RECEIPT</h3></th></tr>
   <tr th:each="soldhouse : ${listProducts}">	
     <th>UserName:</th>
         <td th:text="${soldhouse.username}"></td>
@@ -94,12 +118,14 @@ body{background-image:url('r1.jpg');background-repeat: no-repeat;
    <td th:text="${soldhouse.ownercontactnumber}"></td>
   </tr>
 </table>
-		<button type="button" class=" btn btn-primary" onclick="Function()" >Download</button>	
-		
-		<a th:href="@{/homepage1}" class="btn btn-primary" >Home</a>
-		
-	</div>
-	 <script src="jspdf.umd.min.js"></script>
+<br>
+<button type="button" class=" button" onclick="Function()" style="margin-left:5%;width:25%">Download</button>
+  <form action="/homepage1" style="margin-left:-75%">
+    <button class="button" type="submit" >Home</button>
+    </form>
+    <br>
+</div>
+<script src="jspdf.umd.min.js"></script>
     <script src="jspdf.plugin.autotable.js"></script>
 	<script>
 	 function Function()
@@ -110,6 +136,5 @@ doc.save("table.pdf");
 console.log("asd");
 }
 </script>
-
 </body>
 </html>

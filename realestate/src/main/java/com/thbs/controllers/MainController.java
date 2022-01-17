@@ -100,8 +100,7 @@ public class MainController {
 	@RequestMapping(value = Constants.USER_PAYMENT_PAGE)
 	public String Payment(Model model, @PathVariable("pid") int pid) {
 		model.addAttribute("name", UserController.n);
-		String pid1="PropertyId "+pid;
-		model.addAttribute("pid", pid1);
+		model.addAttribute("pid", pid);
 		Optional<House> house = houseRepository.findById(pid);
 		House house1 = house.get();
 		price = house1.getPrice();

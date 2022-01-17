@@ -12,7 +12,32 @@
   font-family: arial;
   background-color:white;
 }
+.customers {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:auto;
+	margin-bottom:auto;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
 
+.customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+.customers tr:nth-child(even){background-color: #f2f2f2;}
+
+.customers tr:hover {background-color:dodgerblue;}
+
+.customers th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
 .title {
   color: grey;
   font-size: 18px;
@@ -49,10 +74,10 @@ img{border-radius: 50%;}
 
 <div class="card">
 <br>
-		<table id="MyTable" class="customers" border="3" style="margin-top:10%;margin-left:10%;" >
+<h3 style="color:black;margin-left:-64%">Username: <span style="color:brown" th:text="${username}"></span></h3>
+		<table id="MyTable" class="customers" border="3" style="margin-top:5%;margin-left:10%;" >
 			<thead>
 				<tr class="header">
-					<th>Username</th>
 					<th>PropertyId</th>
 					<th>TransactionId</th>
 					<th>Purchase DateAndTime</th>
@@ -60,7 +85,6 @@ img{border-radius: 50%;}
 			</thead>
 			<tbody>
 				<tr id="tr" th:each="purchase : ${purchaseList}">
-					<td th:text="${purchase.username}"></td>
 					<td th:text="${purchase.pid}"></td>
 					<td th:text="${purchase.transactionId}"></td>
 					<td th:text="${purchase.dateandtime}"></td>
