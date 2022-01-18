@@ -153,6 +153,7 @@ div.a {
 					<th>Size_sqft</th>
 					<th>Price</th>
 					<th>contactNumber</th>
+					<th>Image</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -165,6 +166,7 @@ div.a {
 					<td th:text="${house.size_sqft}"></td>
 					<td th:text="${house.price}"></td>
 					<td th:text="${house.ownercontactnumber}"></td>
+					<td><a th:href="@{/getImage1/{pid}(pid=${house.pid})}" class="button1">ViewImage</a></td>
 					<td><a th:href="@{'/PaymentPage/'+${house.pid}}" class="button1">Purchase</a>
 				</td>
 				</tr>

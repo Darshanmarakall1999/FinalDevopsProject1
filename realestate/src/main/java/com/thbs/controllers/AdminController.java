@@ -111,7 +111,7 @@ public class AdminController {
 	 * @throws Throwable
 	 */
 	@RequestMapping(value = Constants.ADMIN_SAVE_PROPERTY ,method=RequestMethod.POST)
-	public String saveEmployee(@ModelAttribute("house") House house, @RequestParam("houseimage") MultipartFile file) throws IOException {
+	public String saveEmployee(@ModelAttribute("house") House house, @RequestParam("img") MultipartFile file) throws IOException {
 		// save property to database
 		house.setImage(file.getBytes());
 		houseService.saveEmployee(house);
@@ -177,7 +177,8 @@ public class AdminController {
 		House house1 = houseService.getPropertyByPid(pid);
 		model.addAttribute("house1", house1);
 		util u1 = new util();
-		model.addAttribute("image", u1.getImgData(house1.getImage()));
+		model.addAttribute("ext", u1.getImgData(house1.getImage()));
+		
 		return "houseimage";
 	}
 }

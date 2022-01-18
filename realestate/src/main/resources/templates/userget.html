@@ -73,7 +73,7 @@ img{border-radius: 50%;}
 
 <div class="card">
 <br>
-	<table border="3"  class = "customers" style="margin-top:10%;margin-left:10%;" >
+	<table border="3"  class = "customers" style="margin-top:10%;margin-left:6%;" >
 			<thead>
 				<tr>
 					<th>PropertyId</th>
@@ -83,6 +83,7 @@ img{border-radius: 50%;}
 					<th>Size_sqft</th>
 					<th>Price</th>
 					<th>contactNumber</th>
+					<th>Image</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -95,6 +96,7 @@ img{border-radius: 50%;}
 					<td th:text="${house.size_sqft}"></td>
 					<td th:text="${house.price}"></td>
 					<td th:text="${house.ownercontactnumber}"></td>
+					<td><a th:href="@{/getImage1/{pid}(pid=${house.pid})}" class="button1">ViewImage</a></td>
 					<td><a th:href="@{'/PaymentPage/'+${house.pid}}" class="button1">Purchase</a>
 				</td>
 				</td>

@@ -61,7 +61,7 @@ div {
 <h2  align="center" style:"color:#fff">Update Property </h2>
 <div>
     <form id="form" align="center" action="#" th:action="@{/saveEmployee}" th:object="${house}"
-			method="POST">
+			method="POST" enctype="multipart/form-data">
         <label><b>Pid:</b></label><br>
         <input type="text" id="1" placeholder="Enter pid" class="FirstName" th:field="*{pid}" readonly="readonly"><br>
         <label><b>Address:</b></label><br>
@@ -83,8 +83,7 @@ div {
         <input type="text" id="8" placeholder="Enter Owner contact" class="FirstName" th:field="*{ownercontactnumber}" required><br>
         <h3>Add property images:</h3>
 <label for="myfile">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Select files:</label>
-<input type="file" id="myfile" name="image" multiple="multiple"><br><br>
-         
+<input type="file" id="myfile" name="img" multiple="multiple" accept="image/png, image/jpeg"><br><br>   
         <button class="button" type="submit" >Update</button>
     </form>
     <!--<form action="/homepage">-->

@@ -250,6 +250,15 @@ public class UserController {
 		return "purchaseHistory";
 	}
 
+	@GetMapping(value = "/getImage1/{pid}")
+	public String getHouseImage(@PathVariable(value = "pid") int pid, @ModelAttribute("house") House house,Model model) {
+		House house1 = houseService.getPropertyByPid(pid);
+		model.addAttribute("house1", house1);
+		util u1 = new util();
+		model.addAttribute("ext", u1.getImgData(house1.getImage()));
+		
+		return "houseimage1";
+	}
 	/**
 	 * this method helps to generate the random transaction id.
 	 * @return

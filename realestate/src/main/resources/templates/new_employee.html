@@ -60,7 +60,7 @@ div {
 <body id="formbody">
 <h2 align="center">Add Property </h2>
 <div align="center">
-    <form id="form" action="#" th:action="@{/saveEmployee}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="#" th:action="@{/saveEmployee}" 	method="POST" enctype="multipart/form-data">
         <label><b>Pid:</b></label><br>
         <input type="number" id="1" placeholder="Enter pid" class="FirstName" name="pid" required><br>
         <label><b>Address:</b></label><br>
@@ -77,12 +77,12 @@ div {
         <input type="text" id="8" placeholder="Enter Owner contact" class="FirstName" name="ownercontactnumber" required><br>
         <h3>Add property images:</h3>
 <label for="myfile">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Select files:</label>
-<input type="file" id="myfile" name="houseimage" multiple="multiple" accept="image/png, image/jpeg"><br><br>
+<input type="file" id="myfile" name="img" multiple="multiple" accept="image/png, image/jpeg"><br><br>
         <button class="button" type="submit">Add</button>
         
     </form>
     <br>
-    <button class="button" type="button" onclick ="javascript:history.back();return false;"> Back</button>
+    <button style="margin-left:-70%" class="button" type="button" onclick ="javascript:history.back();return false;"> Back</button>
     
     
 </div>

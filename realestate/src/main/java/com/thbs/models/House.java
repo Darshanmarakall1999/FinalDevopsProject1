@@ -32,11 +32,10 @@ public class House {
 	private int price;
 	@Column(name = "ownercontactnumber")
 	private String ownercontactnumber;
-	
-	@Lob
-	@Column(name="image")
-	private byte[] image;
 
+	@Lob
+	@Column(name = "image")
+	private byte[] image;
 	/**
 	 * 
 	 * @param pid
@@ -47,13 +46,10 @@ public class House {
 	 * @param price
 	 * @param ownercontactnumber
 	 */
-	
 
 	public House() {
 		super();
 	}
-
-	
 
 	public int getPid() {
 		return pid;
@@ -111,19 +107,13 @@ public class House {
 		this.ownercontactnumber = ownercontactnumber;
 	}
 
-
-
 	public byte[] getImage() {
 		return image;
 	}
 
-
-
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-
-
 
 	public House(int pid, String address, int bedrooms, int bathrooms, int size_sqft, int price,
 			String ownercontactnumber, byte[] image) {
@@ -138,8 +128,6 @@ public class House {
 		this.image = image;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "House [pid=" + pid + ", address=" + address + ", bedrooms=" + bedrooms + ", bathrooms=" + bathrooms
@@ -148,7 +136,4 @@ public class House {
 	}
 
 	
-
-	
-
 }
