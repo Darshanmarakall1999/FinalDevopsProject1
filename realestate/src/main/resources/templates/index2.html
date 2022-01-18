@@ -107,6 +107,7 @@ img{border-radius: 50%;}
 					<th>Size_sqft</th>
 					<th>Price</th>
 					<th>contactNumber</th>
+					<th>HomeImage</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -119,7 +120,7 @@ img{border-radius: 50%;}
 					<td th:text="${house.size_sqft}"></td>
 					<td th:text="${house.price}"></td>
 					<td th:text="${house.ownercontactnumber}"></td>
-					
+					<td><a th:href="@{/getImage/{pid}(pid=${house.pid})}" class="button1">viewImage</a></td>
 					<td><a th:href="@{/showFormForUpdate/{pid}(pid=${house.pid})}" class="button1">Update</a>
 					    <a th:href="@{/deleteEmployee/{pid}(pid=${house.pid})}" class="button1">Delete</a>
 				</td>

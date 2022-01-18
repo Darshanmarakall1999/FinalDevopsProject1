@@ -1,5 +1,6 @@
 package com.thbs.controllers;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.thbs.RealestateApplication;
 import com.thbs.constantProperties.Constants;
@@ -20,6 +24,7 @@ import com.thbs.models.Admin;
 import com.thbs.models.House;
 import com.thbs.repository.AdminRepository;
 import com.thbs.services.HouseServiceImpl;
+import com.thbs.util.util;
 
 /**
  * 
@@ -32,7 +37,7 @@ public class AdminController {
 	HouseServiceImpl houseService;
 	@Autowired
 	AdminRepository adminRepository;
-	
+
 	static String adminId;
 	private static final Log LOGGER = LogFactory.getLog(RealestateApplication.class);
 
@@ -55,6 +60,9 @@ public class AdminController {
 				model.addAttribute("listProducts", listProducts);
 				adminId = a.getAdminid();
 				model.addAttribute("adminId", adminId);
+
+				model.addAttribute("util", new util());
+
 				return "adminportal";
 			} else {
 				return "admin";
@@ -99,10 +107,13 @@ public class AdminController {
 	 * 
 	 * @param house
 	 * @return
+	 * @throws IOException
+	 * @throws Throwable
 	 */
-	@PostMapping(value = Constants.ADMIN_SAVE_PROPERTY)
-	public String saveEmployee(@ModelAttribute("house") House house) {
-		// save employee to database
+	@RequestMapping(value = Constants.ADMIN_SAVE_PROPERTY ,method=RequestMethod.POST)
+	public String saveEmployee(@ModelAttribute("house") House house, @RequestParam("houseimage") MultipartFile file) throws IOException {
+		// save property to database
+		house.setImage(file.getBytes());
 		houseService.saveEmployee(house);
 		return "redirect:/homepage";
 	}
@@ -152,4 +163,21 @@ public class AdminController {
 		return "index2";
 	}
 
+	
+	/**
+	 * display home images
+	 * 
+	 * @param pid
+	 * @param house
+	 * @param model
+	 * @return
+	 */
+	@GetMapping(value = "/getImage/{pid}")
+	public String getHouseImage(@PathVariable(value = "pid") int pid, @ModelAttribute("house") House house,Model model) {
+		House house1 = houseService.getPropertyByPid(pid);
+		model.addAttribute("house1", house1);
+		util u1 = new util();
+		model.addAttribute("image", u1.getImgData(house1.getImage()));
+		return "houseimage";
+	}
 }

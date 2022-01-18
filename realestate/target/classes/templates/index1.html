@@ -103,6 +103,7 @@ div.a {
 					<th>Size_sqft</th>
 					<th>Price</th>
 					<th>contactNumber</th>
+					<th>image</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -115,6 +116,9 @@ div.a {
 					<td th:text="${house.size_sqft}"></td>
 					<td th:text="${house.price}"></td>
 					<td th:text="${house.ownercontactnumber}"></td>
+					<td th:text="${house.image}"><img th:src="'data:image/jpeg;base64,' + ${util.getImgData(house.getImage)}"
+width="150px"
+height="200px;"></td>
 					<td><a th:href="@{/showFormForUpdate/{pid}(pid=${house.pid})}" class="btn btn-primary">Update</a>
 					    <a th:href="@{/deleteEmployee/{pid}(pid=${house.pid})}" class="btn btn-danger">Delete</a>
 				</td>
@@ -124,6 +128,7 @@ div.a {
 	</div>
 	
 	</div>
+	
 	
 </body>
 </html>

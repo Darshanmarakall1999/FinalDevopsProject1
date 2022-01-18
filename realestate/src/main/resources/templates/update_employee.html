@@ -56,34 +56,40 @@ div {
   display: inline-block;
   font-size: 16px;
 }
-     </style>
-<body id="formbody">
-<h2 align="center">Add Property </h2>
-<div align="center">
-    <form id="form" action="#" th:action="@{/saveEmployee}" method="POST" enctype="multipart/form-data">
+ </style>
+<body id="formbody" >
+<h2  align="center" style:"color:#fff">Update Property </h2>
+<div>
+    <form id="form" align="center" action="#" th:action="@{/saveEmployee}" th:object="${house}"
+			method="POST">
         <label><b>Pid:</b></label><br>
-        <input type="number" id="1" placeholder="Enter pid" class="FirstName" name="pid" required><br>
+        <input type="text" id="1" placeholder="Enter pid" class="FirstName" th:field="*{pid}" readonly="readonly"><br>
         <label><b>Address:</b></label><br>
-        <input type="text" id="2" placeholder="Enter address" class="FirstName" name="address" required><br>
+        <input type="text" id="2" placeholder="Enter address" class="FirstName" th:field="*{address}" required><br>
+        
         <label><b>Bedrooms:</b></label><br>
-        <input type="number" id="3" placeholder="Enter no. of bedrooms" class="FirstName" name="bedrooms" required><br>
+        <input type="number" id="3" placeholder="Enter no. of bedrooms" class="FirstName" th:field="*{bedrooms}" required><br>
+         
         <label><b>Bathrooms:</b></label><br>
-        <input type="number" id="4" placeholder="Enter no. of bathrooms" class="FirstName" name="bathrooms" required><br>
+        <input type="number" id="4" placeholder="Enter no. of bathrooms" class="FirstName" th:field="*{bathrooms}" required><br>
+         
         <label><b>Size_sqrt:</b></label><br>
-        <input type="number" id="5" placeholder="Enter size in sqrt" class="FirstName" name="size" required><br>
+        <input type="number" id="5" placeholder="Enter size in sqft" class="FirstName" th:field="*{size_sqft}" required><br>
+         
         <label><b>Price:</b></label><br>
-        <input type="number" id="6" placeholder="Enter price" class="FirstName" name="price" required><br>
+        <input type="number" id="6" placeholder="Enter price" class="FirstName" th:field="*{price}" required><br>
+         
         <label><b>Owner Contact:</b></label><br>
-        <input type="text" id="8" placeholder="Enter Owner contact" class="FirstName" name="ownercontactnumber" required><br>
+        <input type="text" id="8" placeholder="Enter Owner contact" class="FirstName" th:field="*{ownercontactnumber}" required><br>
         <h3>Add property images:</h3>
 <label for="myfile">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Select files:</label>
-<input type="file" id="myfile" name="houseimage" multiple="multiple" accept="image/png, image/jpeg"><br><br>
-        <button class="button" type="submit">Add</button>
-        
+<input type="file" id="myfile" name="image" multiple="multiple"><br><br>
+         
+        <button class="button" type="submit" >Update</button>
     </form>
-    <br>
-    <button class="button" type="button" onclick ="javascript:history.back();return false;"> Back</button>
-    
+    <!--<form action="/homepage">-->
+    <button class="button" type="submit" onclick ="javascript:history.back();return true;" >Back</button>
+   <!-- </form>-->
     
 </div>
 </body>

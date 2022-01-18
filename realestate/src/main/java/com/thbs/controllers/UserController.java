@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,6 +27,7 @@ import com.thbs.repository.PurchaseRepository;
 import com.thbs.services.HouseService;
 import com.thbs.services.PurchaseService;
 import com.thbs.services.UserService;
+import com.thbs.util.util;
 
 /**
  * @author Darshan and Rounak
@@ -84,6 +86,7 @@ public class UserController {
 				model.addAttribute("listProducts", listProducts);
 				n = u.getUsername();
 				model.addAttribute("n", n);
+				model.addAttribute("util", new util());
 				return "userportl";
 			} else {
 				return "invalid";
@@ -263,4 +266,5 @@ public class UserController {
 		return s;
 	}
 
+	
 }
