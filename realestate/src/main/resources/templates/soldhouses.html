@@ -5,7 +5,7 @@
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 600px;
+  max-width: 1500px;
   height:auto;
   margin: auto;
   text-align: center;
@@ -42,7 +42,18 @@
   color: grey;
   font-size: 18px;
 }
-
+.button1 {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 button {
   border: none;
   outline: 0;
@@ -70,29 +81,38 @@ img{border-radius: 50%;}
 </head>
 <body  style="background-image:url(bg_building.jpg);background-size:cover;">
 
-<h2 style="text-align:center;color:white">Purchase History</h2>
+<h2 style="text-align:center;color:white">Sold Property list</h2>
 
 <div class="card">
 <br>
-<h3 style="color:white;margin-left:-64%">Username: <span style="color:brown" th:text="${username}"></span></h3>
-		<table id="MyTable" class="customers" border="3" style="margin-top:5%;margin-left:10%;" >
+		<table id="MyTable" class="customers" border="3"  >
 			<thead>
 				<tr class="header">
 					<th>PropertyId</th>
-					<th>TransactionId</th>
-					<th>Purchase DateAndTime</th>
+					<th>Address</th>
+					<th>Bedrooms</th>
+					<th>Bathrooms</th>
+					<th>Size_sqft</th>
+					<th>Price</th>
+					<th>contactNumber</th>
+					<th>HomeImage</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr id="tr" th:each="purchase : ${purchaseList}">
-					<td th:text="${purchase.pid}"></td>
-					<td th:text="${purchase.transactionId}"></td>
-					<td th:text="${purchase.dateandtime}"></td>
+				<tr id="tr" th:each="soldhouses : ${listProducts}">
+					<td th:text="${soldhouses.pid}"></td>
+					<td th:text="${soldhouses.address}"></td>
+					<td th:text="${soldhouses.bedrooms}"></td>
+					<td th:text="${soldhouses.bathrooms}"></td>
+					<td th:text="${soldhouses.size_sqft}"></td>
+					<td th:text="${soldhouses.price}"></td>
+					<td th:text="${soldhouses.ownercontactnumber}"></td>
+					<td><a th:href="@{/getsoldImage/{pid}(pid=${soldhouses.pid})}" class="button1">viewImage</a></td>
 				</tr>
 			</tbody>
 		</table>
 		<br>
-  <form action="/homepage1" style="margin-left:3%">
+  <form action="/homepage" style="margin-left:3%">
     <button class="button" type="submit" >Home</button>
     </form>
     <br>

@@ -58,10 +58,11 @@ div {
 }
  </style>
 <body id="formbody" >
-<h2  align="center" style:"color:#fff">Update Property </h2>
+
 <div>
     <form id="form" align="center" action="#" th:action="@{/saveEmployee}" th:object="${house}"
 			method="POST" enctype="multipart/form-data">
+			<h2  align="center" style:"color:#fff">Update Property </h2>
         <label><b>Pid:</b></label><br>
         <input type="text" id="1" placeholder="Enter pid" class="FirstName" th:field="*{pid}" readonly="readonly"><br>
         <label><b>Address:</b></label><br>

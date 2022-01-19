@@ -163,7 +163,7 @@ header ul li a:hover, header ul li a.active {
 /* start: main property styles */
 
 #property-details {
-  padding: 1.75rem 20px 0.5rem;
+  padding: 0.5rem 2px 0rem;
 }
 
 #property-details strong {
@@ -178,14 +178,15 @@ header ul li a:hover, header ul li a.active {
 }
 
 #property-details .home-icon {
-  margin-right: 5px;
+ 
   font-size: 40px;
   color: #00aeef;
 }
 
 #property-details .home-icon .fa {
-  position: relative;
-  bottom: 10px;
+   margin-left:5%;
+  margin-top:-5%;
+  bottom:5px;
 }
 
 #property-details .address-container {
@@ -700,12 +701,12 @@ header ul li a:hover, header ul li a.active {
 
 footer {
   background: #333;
-  padding: 8rem 0;
+  padding: 1rem 0;
   color: #777;
 }
 
 footer .flex {
-  padding-bottom: 6rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #777;
 }
 
@@ -724,11 +725,11 @@ footer .footer-about {
 }
 
 footer .footer-about p {
-  width: 65%;
+  width: 80%;
 }
 
 footer .footer-quick-links {
-  width: 16%;
+  width: 10%;
 }
 
 footer .footer-quick-links ul {

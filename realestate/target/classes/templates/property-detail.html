@@ -1,200 +1,159 @@
-<header>
-    <div class="wrapper">
-        
-<ul class="nav-area">
-<li><a href="/user">User</a></li>
-<li><a href="/admin_login">Admin</a></li>
-<li><a href="/contact">About</a></li>
+<!DOCTYPE html>
+<html lang="en">
 
-</ul>
-</div>
-<div class="welcome-text">
-        <h1>
-R e a l &nbsp e s t a t e</h1>
-<h4 style="color:white">where you meet your dreams</h4>
-<a href="/about">Contact US</a>
-    </div>
-</header>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link href="property-styles.css" type="text/css" rel="Stylesheet" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Realestate property list</title>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://kit.fontawesome.com/95dc93da07.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  
-  
-   <!--chatbot-->
-  <link rel="stylesheet" type="text/css" href="jquery.convform.css">
-  <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="jquery.convform.js"></script>
-  <script type="text/javascript" src="custom.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+	<link href="property-styles.css" type="text/css" rel="Stylesheet" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/95dc93da07.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+	<!--chatbot-->
+	<link rel="stylesheet" type="text/css" href="jquery.convform.css">
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="jquery.convform.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
 
 </head>
+
 <body>
-<!--chatbot-->
-<div class="chat_icon">
-  <i class="fa fa-comments" aria-hidden="true"></i>
-</div>
-<div class="chat_box">
-  <div class="conv-form-wrapper">
-  <form action="" method="GET" class="hidden">
-  <select name="category" data-conv-question="Hello! How can I help you.">
-    <option value="user">User?</option>
-    <option value="broker">Broker?</option>
-  </select>
-  <div data-conv-fork="category">
-    <div data-conv-case="user">
-      <input type="text" name="requirements" data-conv-question="Please, tell me your requirements">
-    </div>
-    <div data-conv-case="broker">
-      <input type="text" name="negotiate" data-conv-question="Please, tell me how can you negotiate" >
-    </div>
-  </div>
-    <input type="text" name="name" data-conv-question="Please, tell me your name" >
-    <input data-conv-question="Type in your e-mail" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="email" type="email" name="email" required placeholder="What's your e-mail?">
-    <select data-conv-question="Confirm ?">
-      <option value="confirm">confirm</option>
-    </select>
-  </form>
-  </div>
-</div>
-<!--chatbot end-->
-  
-<style>
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    font-family: 'Lato', sans-serif;
-}
-.wrapper{
-    width: 1170px;
-    margin: auto;
-}
-header{
-    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(https://i.postimg.cc/j584FvRh/1.jpg);
-    height: 100vh;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    position: relative;
-}
-.nav-area{
-    float: right;
-    list-style: none;
-    margin-top: 30px;
-}
-.nav-area li{
-    display: inline-block;
-}
-.nav-area li a {
-color: #fff;
-text-decoration: none;
-padding: 5px 20px;
-font-family: poppins;
-font-size: 16px;
-text-transform: uppercase;
-}
-.nav-area li a:hover{
-    background: #fff;
-    color: #333;
-}
-.logo{
-    float: left;
-}
-.logo img{
-    width: 100%;
-    padding: 15px 0;
-}
-.welcome-text{
-    position: absolute;
-    width: 700px;
-    height: 300px;
-    margin: 20% 30%;
-    text-align: center;
-}
-.welcome-text h1{
-    text-align: center;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 60px;
-}
-.welcome-text a{
-    border: 1px solid #fff;
-    padding: 10px 25px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 14px;
-    margin-top: 20px;
-    display: inline-block;
-    color: #fff;
-}
-.welcome-text a:hover{
-    background: #fff;
-    color: #333;
-}
+	<!--chatbot-->
+	<div class="chat_icon">
+		<i class="fa fa-comments" aria-hidden="true"></i>
+	</div>
+	<div class="chat_box">
+		<div class="conv-form-wrapper">
+			<form action="" method="GET" class="hidden">
+				<select name="category" data-conv-question="Hello! How can I help you.">
+					<option value="user">User?</option>
+					<option value="broker">Broker?</option>
+				</select>
+				<div data-conv-fork="category">
+					<div data-conv-case="user">
+						<input type="text" name="requirements" data-conv-question="Please, tell me your requirements">
+					</div>
+					<div data-conv-case="broker">
+						<input type="text" name="negotiate" data-conv-question="Please, tell me how can you negotiate">
+					</div>
+				</div>
+				<input type="text" name="name" data-conv-question="Please, tell me your name">
+				<input data-conv-question="Type in your e-mail"
+					data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+					id="email" type="email" name="email" required placeholder="What's your e-mail?">
+				<select data-conv-question="Confirm ?">
+					<option value="confirm">confirm</option>
+				</select>
+			</form>
+		</div>
+	</div>
+	<!--chatbot end-->
+	<main>
+		<header>
+			<div class="flex container">
+				<a id="logo" href="#">Real Estate Properties</a>
+					<div id="property-details" class="flex container" >
+				<div class="address-container flex">
+					<div class="home-icon">
+						<span  class="fa fa-home"></span>
+					</div>
 
-/*resposive*/
+				</div>
 
-@media (max-width:600px){
-    .wrapper {
-width: 100%;
-}
-.logo {
-float: none;
-width: 50%;
-text-align: center;
-margin: auto;
-}
-img {
-width: ;
-}
-.nav-area {
-float: none;
-margin-top: 0;
-}
-    .nav-area li a {
-padding: 5px;
-font-size: 11px;
-}
-.nav-area {
-text-align: center;
-}
-    .welcome-text {
-width: 100%;
-height: auto;
-margin: 30% 0;
-}
-    .welcome-text h1 {
-font-size: 30px;
-}
-}
 
-</style>
+			</div>
 
-<!--footer begins-->
-<footer>
-    <div class="flex container">
-      <div class="footer-about">
-        <h5>About Real Estate Properties Ltd</h5>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem.
-          Amet aliquid nesciunt veritatis aliquam.</p>
-      </div>
+				<nav>
+					<button id="nav-toggle" class="hamburger-menu">
+						<span class="strip"></span>
+						<span class="strip"></span>
+						<span class="strip"></span>
+					</button>
 
-        <h5 class="follow-us">Follow Us</h5>
-        <ul>
-          <li><a href="https://www.facebook.com/"><span class="fab fa-facebook-f"></span></a></li>
-          <li><a href="https://twitter.com/"><span class="fab fa-twitter"></span></a></li>
-          <li><a href="https://www.instagram.com/accounts/login/"><span class="fab fa-instagram"></span></a></li>
-          <li><a href="https://www.linkedin.com/login"><span class="fab fa-linkedin-in"></span></a></li>
-        </ul>
-      </div>
-    </div>
+					<ul id="nav-menu">
+						<li><a href="/user">User</a></li>
+						<li><a href="/admin_login" class="active">Admin</a></li>
+						<li><a href="/about">About</a></li>
+						<li><a href="/contact">Contact</a></li>
+						<li id="close-flyout"><span class="fas fa-times"></span></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
 
-    <small>
-      Copyright &copy; 2022 All rights reserved | Real Estate Properties Ltd
-    </small>
-  </footer>
+		<section id="main-property">
+			<!-- Start: image slider -->
+			<div id="property-image-slider" class="slick">
+				<div>
+					<img src="property-img-1.jpg" alt="Property Image 1" />
+				</div>
+				<div>
+					<img src="property-img-2.jpg" alt="Property Image 2" />
+				</div>
+				<div>
+					<img src="property-img-3.jpg" alt="Property Image 3" />
+				</div>
+				<div>
+					<img src="property-img-4.jpg" alt="Property Image 4" />
+				</div>
+				<div>
+					<img src="property-img-5.jpg" alt="Property Image 5" />
+				</div>
+				<div>
+					<img src="property-img-6.jpg" alt="Property Image 6" />
+				</div>
+				<div>
+					<img src="property-img-7.jpg" alt="Property Image 7" />
+				</div>
+				<div>
+					<img src="property-img-8.jpg" alt="Property Image 8" />
+				</div>
+				<div>
+					<img src="property-img-9.jpg" alt="Property Image 9" />
+				</div>
+			</div>
+			<!-- End: image slider -->
+
+
+		</section>
+	</main>
+
+
+	<footer>
+		<div class="flex container">
+			<div class="footer-about">
+				<h5>About Real Estate Properties Ltd</h5>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum
+					autem.
+					Amet aliquid nesciunt veritatis aliquam.</p>
+			</div>
+
+
+			<div class="footer-subscribe">
+
+				<h5 class="follow-us">Follow Us</h5>
+				<ul>
+					<li><a href="https://www.facebook.com/"><span class="fab fa-facebook-f"></span></a></li>
+					<li><a href="https://twitter.com/"><span class="fab fa-twitter"></span></a></li>
+					<li><a href="https://www.instagram.com/accounts/login/"><span class="fab fa-instagram"></span></a>
+					</li>
+					<li><a href="https://www.linkedin.com/login"><span class="fab fa-linkedin-in"></span></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<small>
+			Copyright &copy; 2020 All rights reserved | Real Estate Properties Ltd
+		</small>
+	</footer>
 </body>
 
+<script src="script.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<Your API Key Here>&callback=initMap"></script>
+
+</html>

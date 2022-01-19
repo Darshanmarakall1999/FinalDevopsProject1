@@ -1,188 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>User portal</title>
 	<link rel="stylesheet" href="userportal.css">
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<style>
-	.btn-group button {
-  background-color: blue; /* Green background */
-  border: 1px solid green; /* Green border */
-  color: white; /* White text */
-  padding: 6px 22px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
-}
-.button {
-  background-color:blue;
-  border: none;
-  color: white;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-.button1 {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
+		.btn-group button {
+			background-color: blue;
+			/* Green background */
+			border: 1px solid green;
+			/* Green border */
+			color: white;
+			/* White text */
+			padding: 6px 22px;
+			/* Some padding */
+			cursor: pointer;
+			/* Pointer/hand icon */
+			float: left;
+			/* Float the buttons side by side */
+		}
 
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
+		.button {
+			background-color: blue;
+			border: none;
+			color: white;
+			padding: 3px 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
 
-.btn-group button:not(:last-child) {
-  border-right:medium; /* Prevent double borders */
-}
+		.button1 {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 5px 15px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
 
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: #3e8e41;
-}
-div.a {
-  position: relative;
-  width: 400px;
-  height: 200px;
-  border: 3px solid red;
-}
-	img {
-  border-radius: 50%;
-  width:45px;
-  height:45px;
-}
-.customers {
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:auto;
-	margin-bottom:auto;
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 80%;
-}
+		/* Clear floats (clearfix hack) */
+		.btn-group:after {
+			content: "";
+			clear: both;
+			display: table;
+		}
 
-.customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 4px;
-}
+		.btn-group button:not(:last-child) {
+			border-right: medium;
+			/* Prevent double borders */
+		}
 
-.customers tr:nth-child(even){background-color: #f2f2f2;}
+		/* Add a background color on hover */
+		.btn-group button:hover {
+			background-color: #3e8e41;
+		}
 
-.customers tr:hover {background-color:dodgerblue;}
+		div.a {
+			position: relative;
+			width: 400px;
+			height: 200px;
+			border: 3px solid red;
+		}
 
-.customers th {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
+		img {
+			border-radius: 50%;
+			width: 45px;
+			height: 45px;
+		}
+
+		.customers {
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: auto;
+			margin-bottom: auto;
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 80%;
+			color:white;
+		}
+
+		.customers td,
+		#customers th {
+			border: 1px solid white;
+			padding: 4px;
+		}
+
+
+		.customers tr:hover {
+			background-color: dodgerblue;
+		}
+
+		.customers th {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			text-align: left;
+			background-color: #04AA6D;
+			color: white;
+		}
+	</style>
 </head>
-<body>
 
-<div class="wrapper">
-	<div class="navbar">
-		<div class="logo">
-			<a >USER PORTAL</a>
-   	   </div>
-		<div class="nav_right">
-			<ul>
-				<li class="nr_li dd_main">
-				<h5 style="text-align:right;color:deeppink;margin-top:-2%">Welcome, <span th:text="${n}"></span></h5>
-					<img style="margin-left:50%" src="profile.png" alt="profile_img">
-					
-					<div class="dd_menu">
-						<div class="dd_left">
-							<ul>
-								<li><i class="fas fa-cog"></i></li>
-								<li><i class="fas fa-sign-out-alt"></i></li>
-								
-							</ul>
+<body style="background-image:url(bg_building.jpg);background-size:cover;">
+
+	<div class="wrapper">
+		<div class="navbar">
+			<div class="logo">
+				<a>USER PORTAL</a>
+			</div>
+			<div class="nav_right">
+				<ul>
+					<li class="nr_li dd_main">
+					<div class="logo">
+						<h5 style="text-align:right;color:white;margin-top:-2%">Welcome, <span th:text="${n}"></span>
+						</h5>
 						</div>
-						<lass="dd_right">
-							<ul>	
-								<li><form action="/updatePasswordPage">
-	<button  class="button" type="submit">Setting</button>
-	</form></li>
-								<li><form action="/">
-	<button  class="button" type="submit">Logout</button>
-	</form></li>
-	<li><form action="/userProfile">
-	<button  class="button" type="submit">Profile</button>
-	</form></li>
-	<li><form action="/purchaseHistory">
-	<button  class="button" type="submit">History</button>
-	</form></li>
-							</ul>
+						<img style="margin-left:50%" src="profile.png" alt="profile_img">
+
+						<div class="dd_menu">
+							<div class="dd_left">
+								<ul>
+									<li><i class="fas fa-cog"></i></li>
+									<li style="margin-top:2%"><i class="fas fa-id-badge"></i></li>
+									<li><i class="fas fa-shopping-bag"></i></li>
+									<li><i class="fas fa-sign-out-alt"></i></li>
+
+								</ul>
+							</div>
+							<lass="dd_right">
+								<ul>
+									<li>
+										<form action="/updatePasswordPage">
+											<button class="button" type="submit">Setting</button>
+										</form>
+									</li>
+									<li>
+										<form action="/userProfile">
+											<button class="button" type="submit">Profile</button>
+										</form>
+									</li>
+									<li>
+										<form action="/purchaseHistory">
+											<button class="button" type="submit">History</button>
+										</form>
+									</li>
+									<li>
+										<form action="/">
+											<button class="button" type="submit">Logout</button>
+										</form>
+									</li>
+								</ul>
 						</div>
-					</div>
+			</div>
 			</ul>
 		</div>
 	</div>
-</div>	
-<div  class="btn-group">
-<br>
-<br>
-	<div class="container my-2">
-	<h2 style="color:deeppink;margin-left:10%">Property List</h2>
-	<form action="/search1" >
-	<button class="btn btn-primary btn-sm mb-3" type="submit" style="position: absolute;margin-top:-3%;left:300px;">search</button>
-	</form>
-		<table id="MyTable" class="customers" border="3"  >
-			<thead>
-				<tr class="header">
-					<th>PropertyId</th>
-					<th>Address</th>
-					<th>Bedrooms</th>
-					<th>Bathrooms</th>
-					<th>Size_sqft</th>
-					<th>Price</th>
-					<th>contactNumber</th>
-					<th>Image</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr id="tr" th:each="house : ${listProducts}">
-					<td th:text="${house.pid}"></td>
-					<td th:text="${house.address}"></td>
-					<td th:text="${house.bedrooms}"></td>
-					<td th:text="${house.bathrooms}"></td>
-					<td th:text="${house.size_sqft}"></td>
-					<td th:text="${house.price}"></td>
-					<td th:text="${house.ownercontactnumber}"></td>
-					<td><a th:href="@{/getImage1/{pid}(pid=${house.pid})}" class="button1">ViewImage</a></td>
-					<td><a th:href="@{'/PaymentPage/'+${house.pid}}" class="button1">Purchase</a>
-				</td>
-				</tr>
-			</tbody>
-		</table>
 	</div>
-	
+	<div class="btn-group">
+		<br>
+		<br>
+		<div class="container my-2">
+			<h2 style="color:white;margin-left:10%">Property List</h2>
+			<form action="/search1">
+				<button class="btn btn-primary btn-sm mb-3" type="submit"
+					style="position: absolute;margin-top:-3%;left:300px;">search</button>
+			</form>
+			<table id="MyTable" class="customers" border="3">
+				<thead>
+					<tr class="header">
+						<th>PropertyId</th>
+						<th>Address</th>
+						<th>Bedrooms</th>
+						<th>Bathrooms</th>
+						<th>Size_sqft</th>
+						<th>Price</th>
+						<th>contactNumber</th>
+						<th>Image</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr id="tr" th:each="house : ${listProducts}">
+						<td th:text="${house.pid}"></td>
+						<td th:text="${house.address}"></td>
+						<td th:text="${house.bedrooms}"></td>
+						<td th:text="${house.bathrooms}"></td>
+						<td th:text="${house.size_sqft}"></td>
+						<td th:text="${house.price}"></td>
+						<td th:text="${house.ownercontactnumber}"></td>
+						<td><a th:href="@{/getImage1/{pid}(pid=${house.pid})}" class="button1">ViewImage</a></td>
+						<td><a th:href="@{'/PaymentPage/'+${house.pid}}" class="button1">Purchase</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
 	</div>
 
-<script>
-	var dd_main = document.querySelector(".dd_main");
+	<script>
+		var dd_main = document.querySelector(".dd_main");
 
-	dd_main.addEventListener("click", function(){
-		this.classList.toggle("active");
-	})
-</script>
-	
+		dd_main.addEventListener("click", function () {
+			this.classList.toggle("active");
+		})
+	</script>
+
 </body>
+
 </html>

@@ -50,12 +50,13 @@ margin: 0 auto;
 </style>
 <body>
 <div class="card">
-<h2 style="color:midnightblue;">TranscationId:<span th:text="${tid}"></span></h2>
+<h1 style="color:deeppink;">Rs.  <span style="color:maroon;" th:text="${price}"></span></h1>
+<h2 style="color:deeppink;">paid successfully...</h2>
 <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
 <i class="checkmark">✓</i>
 </div>
 <form action="/getReceipt">
-<h3 style="color:deeppink;">Rs.  <span style="color:maroon;" th:text="${price}"></span> paid successfully...</h3>
+<h2 style="color:midnightblue;">TranscationId:<span th:text="${tid}"></span></h2>
 <h3 style="color:crimson;">user <span style="color:maroon;" th:text="${username}"></span> successfully purchased property with PropertyId  <span style="color:maroon;" th:text="${pid}"></span></h3>
 <button type="submit" class="button" id="confirm-purchase" >Get Receipt</button>
 </form>

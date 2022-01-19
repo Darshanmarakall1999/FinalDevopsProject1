@@ -1,5 +1,7 @@
 package com.thbs.models;
 
+import java.util.Arrays;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,19 +28,9 @@ public class SoldHouses {
 	private int price;
 	@Column(name = "ownercontactnumber")
 	private String ownercontactnumber;
+	private byte[] image;
 	
-	public SoldHouses(String username, int pid, String address, int bedrooms, int bathrooms, int size_sqft, int price,
-			String ownercontactnumber) {
-		super();
-		this.username = username;
-		this.pid = pid;
-		this.address = address;
-		this.bedrooms = bedrooms;
-		this.bathrooms = bathrooms;
-		this.size_sqft = size_sqft;
-		this.price = price;
-		this.ownercontactnumber = ownercontactnumber;
-	}
+	
 	public SoldHouses() {
 		super();
 	}
@@ -90,12 +82,32 @@ public class SoldHouses {
 	public void setOwnercontactnumber(String ownercontactnumber) {
 		this.ownercontactnumber = ownercontactnumber;
 	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	public SoldHouses(String username, int pid, String address, int bedrooms, int bathrooms, int size_sqft, int price,
+			String ownercontactnumber, byte[] image) {
+		super();
+		this.username = username;
+		this.pid = pid;
+		this.address = address;
+		this.bedrooms = bedrooms;
+		this.bathrooms = bathrooms;
+		this.size_sqft = size_sqft;
+		this.price = price;
+		this.ownercontactnumber = ownercontactnumber;
+		this.image = image;
+	}
 	@Override
 	public String toString() {
-		return "username=" + username + ", pid=" + pid + ", address=" + address + ", bedrooms=" + bedrooms
+		return "SoldHouses [username=" + username + ", pid=" + pid + ", address=" + address + ", bedrooms=" + bedrooms
 				+ ", bathrooms=" + bathrooms + ", size_sqft=" + size_sqft + ", price=" + price + ", ownercontactnumber="
-				+ ownercontactnumber;
+				+ ownercontactnumber + ", image=" + Arrays.toString(image) + "]";
 	}
+	
 	
 	
 	

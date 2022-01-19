@@ -9,10 +9,11 @@
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
   text-align: center;
   font-family: arial;
+   background: transparent;
 }
 
 .title {
@@ -50,6 +51,7 @@ button:hover, a:hover {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 80%;
+  color:white;
 }
 
 .customers td, #customers th {
@@ -57,7 +59,6 @@ button:hover, a:hover {
   padding: 4px;
 }
 
-.customers tr:nth-child(even){background-color: #f2f2f2;}
 
 .customers tr:hover {background-color:dodgerblue;}
 
@@ -72,53 +73,53 @@ button:hover, a:hover {
   color: grey;
   font-size: 18px;
 }
-img{border-radius: 50%;}
+#table1 th,td{ text-align: left;}
 </style>
 </head>
-<body style="background-color:azure;">
+<body style="background-image:url(bg_building.jpg);background-size:cover;">
 <br>
 <div class="card">
 <br>
-  <table id="table1" class="table" border="3" style="margin-top:5%;" >
-<tr><th  colspan="2"><h3 style="color:brown;text-align:center;background-color:white">RECEIPT</h3></th></tr>
+  <table id="table1" align="right" class="table1" border="3" style="margin-left:2%;color:white" >
+<tr><th  colspan="2"><h3 style="color:white;text-align:center;">RECEIPT</h3></th></tr>
   <tr th:each="soldhouse : ${listProducts}">	
-    <th>UserName:</th>
+    <th>UserName</th>
         <td th:text="${soldhouse.username}"></td>
     </tr>
     <tr th:each="purchase : ${purchase}">	
-    <th>TransactionId:</th>
+    <th>TransactionId</th>
         <td th:text="${purchase.transactionId}"></td>
     </tr>
    <tr th:each="purchase : ${purchase}">	
-    <th>DateAndTime:</th>
+    <th>DateAndTime</th>
         <td th:text="${purchase.dateandtime}"></td>
     </tr> 
   <tr th:each="soldhouse : ${listProducts}">
-    <th>ProertyId:</th>
+    <th>PropertyId</th>
 		<td th:text="${soldhouse.pid}"></td>
   </tr>
   <tr th:each="soldhouse : ${listProducts}">
-    <th>Address:</th>
+    <th>Address</th>
     <td th:text="${soldhouse.address}"></td>
   </tr>
   <tr th:each="soldhouse : ${listProducts}">
-    <th>Bedrooms:</th>
+    <th>Bedrooms</th>
     <td th:text="${soldhouse.bedrooms}"></td>
   </tr>
   <tr th:each="soldhouse : ${listProducts}">
-    <th>Bathrooms:</th>
+    <th>Bathrooms</th>
     <td th:text="${soldhouse.bathrooms}"></td>
   </tr >
   <tr th:each="soldhouse : ${listProducts}">
-    <th>Size(sqft):</th>
+    <th>Size(sqft)</th>
     <td th:text="${soldhouse.size_sqft}"></td>
   </tr>
   <tr th:each="soldhouse : ${listProducts}">
-    <th>Price:</th>
+    <th>Price</th>
     <td th:text="${soldhouse.price}"></td>
   </tr>
   <tr th:each="soldhouse : ${listProducts}">
-    <th>ContactNumber:</th>
+    <th>ContactNumber</th>
    <td th:text="${soldhouse.ownercontactnumber}"></td>
   </tr>
 </table>

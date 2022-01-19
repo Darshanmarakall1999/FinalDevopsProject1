@@ -22,7 +22,9 @@ import com.thbs.RealestateApplication;
 import com.thbs.constantProperties.Constants;
 import com.thbs.models.Admin;
 import com.thbs.models.House;
+import com.thbs.models.SoldHouses;
 import com.thbs.repository.AdminRepository;
+import com.thbs.repository.SoldHousesRepository;
 import com.thbs.services.HouseServiceImpl;
 import com.thbs.util.util;
 
@@ -181,4 +183,25 @@ public class AdminController {
 		
 		return "houseimage";
 	}
+	
+	@GetMapping(value = "/getsoldImage/{pid}")
+	public String getsoldHouseImage(@PathVariable(value = "pid") int pid, @ModelAttribute("soldhouses") SoldHouses soldhouses,Model model) {
+		Optional<SoldHouses> house1 = soldhousesrepository.findById(pid);
+		SoldHouses h1=house1.get();
+		model.addAttribute("house1", house1);
+		util u1 = new util();
+		model.addAttribute("ext", u1.getImgData(h1.getImage()));
+		
+		return "houseimage";
+	}
+	@Autowired
+	SoldHousesRepository soldhousesrepository;
+	@GetMapping(value = "/getSoldHouses")
+	public String getAllSoldHouses(@ModelAttribute("soldhouses") SoldHouses soldhouses, Model model) {
+		List<SoldHouses> listProducts = soldhousesrepository.findAll();
+		model.addAttribute("listProducts", listProducts);
+		return "soldhouses";
+	}
+	
+	
 }
