@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.thbs.constantProperties.Constants;
+import com.thbs.models.Admin;
 import com.thbs.models.House;
 import com.thbs.models.User;
+import com.thbs.repository.AdminRepository;
 import com.thbs.repository.HouseRepository;
 import com.thbs.services.UserService;
 
@@ -27,10 +29,16 @@ public class MainController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	AdminRepository adminRepository;
 	static int price;
 
 	@RequestMapping(value = Constants.LANDING_PAGE)
 	public String index() {
+		Admin admin=new Admin();
+		admin.setAdminid("sagar");
+		admin.setPassword("sagar@101");
+		adminRepository.save(admin);
 		return "property-detail";
 	}
 
