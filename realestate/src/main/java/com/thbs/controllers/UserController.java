@@ -257,7 +257,7 @@ public class UserController {
 		util u1 = new util();
 		model.addAttribute("ext", u1.getImgData(house1.getImage()));
 		
-		return "houseimage1";
+		return "userviewimg";
 	}
 	/**
 	 * this method helps to generate the random transaction id.
