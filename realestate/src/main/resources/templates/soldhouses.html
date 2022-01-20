@@ -81,13 +81,14 @@ img{border-radius: 50%;}
 </head>
 <body  style="background-image:url(bg_building.jpg);background-size:cover;">
 
-<h2 style="text-align:center;color:white">Sold Property list</h2>
+<h2 style="text-align:center;color:white">Sold Properties list</h2>
 
 <div class="card">
 <br>
 		<table id="MyTable" class="customers" border="3"  >
 			<thead>
 				<tr class="header">
+				    <th>UserName</th>
 					<th>PropertyId</th>
 					<th>Address</th>
 					<th>Bedrooms</th>
@@ -100,6 +101,7 @@ img{border-radius: 50%;}
 			</thead>
 			<tbody>
 				<tr id="tr" th:each="soldhouses : ${listProducts}">
+				<td th:text="${soldhouses.username}"></td>
 					<td th:text="${soldhouses.pid}"></td>
 					<td th:text="${soldhouses.address}"></td>
 					<td th:text="${soldhouses.bedrooms}"></td>
