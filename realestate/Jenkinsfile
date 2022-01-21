@@ -1,0 +1,37 @@
+.pipeline {
+    agent any
+    tools {
+         maven 'maven3'
+    }
+    stages{
+        stage('Build'){
+            steps{
+                 cleanWs()
+                 checkout scm
+                echo "Building ${env.devopsproject_1}..."
+            }
+        }
+        
+        stage('Upload War To Nexus'){
+            steps{
+                nexusArtifactUploader artifacts:[
+                   [
+                        artifactId: 'realestate',
+                       classifier: '',
+                       file: 'realestate/target/realestate-0.0.1-SNAPSHOT.jar',
+                      type: 'jar'
+                 ]
+             ],
+                   credentialsId: 'e2a1a938-99b3-41d8-a224-cb5dcb715cad',
+                   groupId: 'torryharrisproject_2',
+                   nexusUrl: '3.133.254.46:8081/',
+                   nexusVersion: 'nexus3',
+                   protocol: 'http',
+                   repository: 'maven-snapshots',
+                   version: '0.0.1-SNAPSHOT'
+  
+            }
+        }
+        
+    }
+}
